@@ -3,17 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Mail, Calendar } from "lucide-react";
-
-function BrandIcon({ slug, label }: { slug: string; label: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`https://cdn.simpleicons.org/${slug}/9CA3AF`}
-      alt={label}
-      className="h-4 w-4"
-    />
-  );
-}
+import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 /**
  * ⚙️  TO ACTIVATE THE CALENDAR BOOKING WIDGET:
@@ -29,7 +19,7 @@ function BrandIcon({ slug, label }: { slug: string; label: string }) {
  * Until you do this, the iframe will show a Google placeholder.
  */
 const CALENDAR_EMBED_URL =
-  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0u39E0PltuOypVfPXrb3vnf4j9tdFFgTERHg0Omu8wzt6xhk-S-5GytsHFIIEPc9YOXCNRHuJG?gv=false";
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0u39E0PltuOypVfPXrb3vnf4j9tdFFgTERHg0Omu8wzt6xhk-S-5GytsHFIIEPc9YOXCNRHuJG";
 
 const CALENDAR_CONFIGURED = !CALENDAR_EMBED_URL.includes("YOUR_SCHEDULE_ID");
 
@@ -119,6 +109,7 @@ export default function Contact() {
                 <option value="n8n Workflow">n8n Workflow Automation</option>
                 <option value="Data Pipeline">Data Pipeline / BigQuery</option>
                 <option value="Prompt Engineering">Prompt Engineering / AI Agent</option>
+                <option value="Prompt Engineering">Email Automation</option>
                 <option value="Other">Other</option>
               </select>
               <textarea
@@ -151,7 +142,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-muted hover:text-primary transition"
               >
-                <BrandIcon slug="linkedin" label="LinkedIn" />
+                <FaLinkedin className="h-4 w-4" />
                 <span className="text-sm">LinkedIn</span>
               </a>
               <a
@@ -160,7 +151,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-muted hover:text-primary transition"
               >
-                <BrandIcon slug="facebook" label="Facebook" />
+                <FaFacebook className="h-4 w-4" />
                 <span className="text-sm">Facebook</span>
               </a>
             </div>

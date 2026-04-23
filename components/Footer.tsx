@@ -1,15 +1,5 @@
 import { Mail } from "lucide-react";
-
-function BrandIcon({ slug, label }: { slug: string; label: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`https://cdn.simpleicons.org/${slug}/9CA3AF`}
-      alt={label}
-      className="h-4 w-4"
-    />
-  );
-}
+import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -37,18 +27,18 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-surface/30 transition hover:border-primary/50"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-surface/30 text-muted transition hover:border-primary/50 hover:text-primary"
           >
-            <BrandIcon slug="linkedin" label="LinkedIn" />
+            <FaLinkedin className="h-4 w-4" />
           </a>
           <a
             href="https://www.facebook.com/JeffreyQuemuelOfficial"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-surface/30 transition hover:border-primary/50"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-surface/30 text-muted transition hover:border-primary/50 hover:text-primary"
           >
-            <BrandIcon slug="facebook" label="Facebook" />
+            <FaFacebook className="h-4 w-4" />
           </a>
         </div>
 
