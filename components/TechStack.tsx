@@ -1,31 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
+import {
+  SiN8N,
+  SiJavascript,
+  SiPython,
+  SiNodedotjs,
+  SiKotlin,
+  SiDocker,
+  SiAirtable,
+  SiGooglebigquery,
+  SiGooglesheets,
+  SiGoogleappsscript,
+  SiSupabase,
+  SiHubspot,
+  SiSlack,
+  SiAnthropic,
+  SiGit,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 
 interface Tech {
   name: string;
-  slug: string;
+  Icon: IconType;
   color: string;
 }
 
 const STACK: Tech[] = [
-  { name: "n8n", slug: "n8n", color: "EA4B71" },
-  { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
-  { name: "Python", slug: "python", color: "3776AB" },
-  { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
-  { name: "Java", slug: "openjdk", color: "ED8B00" },
-  { name: "Kotlin", slug: "kotlin", color: "7F52FF" },
-  { name: "Docker", slug: "docker", color: "2496ED" },
-  { name: "Shopee", slug: "shopee", color: "EE4D2D" },
-  { name: "Lazada", slug: "lazada", color: "FFFFFF" },
-  { name: "BigQuery", slug: "googlebigquery", color: "669DF6" },
-  { name: "Google Sheets", slug: "googlesheets", color: "34A853" },
-  { name: "Apps Script", slug: "googleappsscript", color: "4285F4" },
-  { name: "Supabase", slug: "supabase", color: "3FCF8E" },
-  { name: "HubSpot", slug: "hubspot", color: "FF7A59" },
-  { name: "Slack", slug: "slack", color: "E01E5A" },
-  { name: "Claude AI", slug: "anthropic", color: "D97757" },
-  { name: "Git", slug: "git", color: "F05032" },
+  { name: "n8n", Icon: SiN8N, color: "#EA4B71" },
+  { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Python", Icon: SiPython, color: "#4B8BBE" },
+  { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
+  { name: "Java", Icon: FaJava, color: "#ED8B00" },
+  { name: "Kotlin", Icon: SiKotlin, color: "#7F52FF" },
+  { name: "Docker", Icon: SiDocker, color: "#2496ED" },
+  { name: "Airtable", Icon: SiAirtable, color: "#FCB400" },
+  { name: "BigQuery", Icon: SiGooglebigquery, color: "#669DF6" },
+  { name: "Google Sheets", Icon: SiGooglesheets, color: "#34A853" },
+  { name: "Apps Script", Icon: SiGoogleappsscript, color: "#4285F4" },
+  { name: "Supabase", Icon: SiSupabase, color: "#3FCF8E" },
+  { name: "HubSpot", Icon: SiHubspot, color: "#FF7A59" },
+  { name: "Slack", Icon: SiSlack, color: "#E01E5A" },
+  { name: "Claude AI", Icon: SiAnthropic, color: "#D97757" },
+  { name: "Git", Icon: SiGit, color: "#F05032" },
 ];
 
 export default function TechStack() {
@@ -46,23 +64,20 @@ export default function TechStack() {
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
         >
-          {[...STACK, ...STACK].map((tech, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 shrink-0 rounded-full border border-white/10 bg-surface/50 px-5 py-3 backdrop-blur-sm hover:border-primary/40 transition"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`}
-                alt={tech.name}
-                className="h-6 w-6"
-                loading="lazy"
-              />
-              <span className="text-sm text-foreground whitespace-nowrap">
-                {tech.name}
-              </span>
-            </div>
-          ))}
+          {[...STACK, ...STACK].map((tech, i) => {
+            const Icon = tech.Icon;
+            return (
+              <div
+                key={i}
+                className="flex items-center gap-3 shrink-0 rounded-full border border-white/10 bg-surface/50 px-5 py-3 backdrop-blur-sm hover:border-primary/40 transition"
+              >
+                <Icon className="h-6 w-6" style={{ color: tech.color }} />
+                <span className="text-sm text-foreground whitespace-nowrap">
+                  {tech.name}
+                </span>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
