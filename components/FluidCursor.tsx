@@ -9,6 +9,24 @@ interface Point {
   vy: number;
   age: number;
   baseRadius: number;
+  rgb: string;
+}
+
+// Three smoke tones for visual variety
+const SMOKE_PALETTE = [
+  { rgb: "0, 0, 0", weight: 0.5 },           // black shadow (50%)
+  { rgb: "30, 35, 45", weight: 0.25 },       // dark smoke (25%)
+  { rgb: "200, 210, 225", weight: 0.25 },    // white smoke (25%)
+];
+
+function pickSmokeColor(): string {
+  const r = Math.random();
+  let cumulative = 0;
+  for (const tone of SMOKE_PALETTE) {
+    cumulative += tone.weight;
+    if (r < cumulative) return tone.rgb;
+  }
+  return SMOKE_PALETTE[0].rgb;
 }
 
 export default function FluidCursor() {
@@ -61,6 +79,7 @@ export default function FluidCursor() {
           vy: dirY * 0.7 + perpY * spread,
           age: 0,
           baseRadius: 20 + Math.random() * 15,
+          rgb: pickSmokeColor(),
         });
       }
       lastX = e.clientX;
@@ -93,9 +112,9 @@ export default function FluidCursor() {
         const gradient = ctx.createRadialGradient(
           p.x, p.y, 0, p.x, p.y, radius
         );
-        gradient.addColorStop(0, `rgba(0, 0, 0, ${alpha})`);
-        gradient.addColorStop(0.5, `rgba(0, 0, 0, ${alpha * 0.4})`);
-        gradient.addColorStop(1, `rgba(0, 0, 0, 0)`);
+        gradient.addColorStop(0, `rgba(${p.rgb}, ${alpha})`);
+        gradient.addColorStop(0.5, `rgba(${p.rgb}, ${alpha * 0.4})`);
+        gradient.addColorStop(1, `rgba(${p.rgb}, 0)`);
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);

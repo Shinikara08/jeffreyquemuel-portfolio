@@ -48,7 +48,7 @@ const STACK: Tech[] = [
 
 export default function TechStack() {
   return (
-    <section className="relative z-10 py-16">
+    <section className="relative z-10 pt-4 pb-16">
       <div className="mx-auto max-w-6xl px-6 mb-8">
         <div className="text-xs uppercase tracking-widest text-muted text-center">
           I Build With

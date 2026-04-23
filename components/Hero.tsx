@@ -7,21 +7,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative z-10 flex min-h-screen items-center justify-center overflow-hidden px-4 py-20"
+      className="relative z-10 flex items-center justify-center overflow-hidden px-4 pt-24 pb-12"
     >
       <ScrollingMarquee />
 
-      <motion.a
-        href="#contact"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute right-6 top-6 z-30 rounded-full border border-primary/30 bg-surface/50 px-4 py-2 text-sm text-primary backdrop-blur-sm transition hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(103,232,249,0.3)]"
-      >
-        Start a Project ⚙
-      </motion.a>
-
-<div className="relative z-20 flex flex-col items-center text-center">
+      <div className="relative z-20 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -48,9 +38,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-4 text-2xl text-primary md:text-3xl"
+          className="mt-4 text-4xl text-primary md:text-5xl uppercase tracking-wide"
         >
-          AI Automation Engineer
+          AI AUTOMATION ENGINEER
         </motion.p>
 
         <motion.p
@@ -77,7 +67,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="mt-10 flex flex-wrap justify-center gap-4"
+          className="mt-8 flex flex-wrap justify-center gap-4"
         >
           <a
             href="#projects"
