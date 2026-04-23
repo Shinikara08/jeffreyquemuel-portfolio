@@ -17,7 +17,7 @@ export default function ScrollingMarquee() {
         className="flex whitespace-nowrap font-heading font-black uppercase tracking-tight text-hero-word"
         style={{ fontSize: "clamp(5rem, 12vw, 14rem)" }}
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
       >
         <span>{text}</span>
         <span>{text}</span>

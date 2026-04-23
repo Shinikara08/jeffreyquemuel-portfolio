@@ -8,7 +8,6 @@ interface Point {
   vx: number;
   vy: number;
   age: number;
-  hue: number;
   baseRadius: number;
 }
 
@@ -30,7 +29,6 @@ export default function FluidCursor() {
 
     const points: Point[] = [];
     let animationId = 0;
-    let hue = 180;
     let lastX = -1;
     let lastY = -1;
 
@@ -62,21 +60,18 @@ export default function FluidCursor() {
           vx: dirX * 0.7 + perpX * spread,
           vy: dirY * 0.7 + perpY * spread,
           age: 0,
-          hue: (hue + i * 5) % 360,
           baseRadius: 20 + Math.random() * 15,
         });
       }
-      hue = (hue + 2) % 360;
       lastX = e.clientX;
       lastY = e.clientY;
     };
 
     const draw = () => {
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(10, 15, 30, 0.06)";
+      ctx.fillStyle = "rgba(10, 15, 30, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.globalCompositeOperation = "lighter";
       for (let i = points.length - 1; i >= 0; i--) {
         const p = points[i];
         p.age += 1;
@@ -91,16 +86,16 @@ export default function FluidCursor() {
           continue;
         }
         const lifeRatio = 1 - p.age / life;
-        const alpha = Math.pow(lifeRatio, 1.8) * 0.22;
+        const alpha = Math.pow(lifeRatio, 1.5) * 0.45;
         const expansion = 1 + (1 - lifeRatio) * 2.2;
         const radius = p.baseRadius * expansion;
 
         const gradient = ctx.createRadialGradient(
           p.x, p.y, 0, p.x, p.y, radius
         );
-        gradient.addColorStop(0, `hsla(${p.hue}, 85%, 60%, ${alpha})`);
-        gradient.addColorStop(0.5, `hsla(${p.hue}, 85%, 55%, ${alpha * 0.35})`);
-        gradient.addColorStop(1, `hsla(${p.hue}, 85%, 50%, 0)`);
+        gradient.addColorStop(0, `rgba(0, 0, 0, ${alpha})`);
+        gradient.addColorStop(0.5, `rgba(0, 0, 0, ${alpha * 0.4})`);
+        gradient.addColorStop(1, `rgba(0, 0, 0, 0)`);
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
@@ -127,7 +122,7 @@ export default function FluidCursor() {
     <canvas
       ref={canvasRef}
       className="pointer-events-none fixed inset-0 z-0"
-      style={{ filter: "blur(14px) contrast(1.1) saturate(1.1)" }}
+      style={{ filter: "blur(14px)" }}
       aria-hidden="true"
     />
   );
