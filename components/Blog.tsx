@@ -49,6 +49,15 @@ const POSTS: Post[] = [
       "The difference between a workflow that runs and one that survives. Idempotency, backoff, state persistence, dev/prod separation.",
     tags: ["n8n", "production", "patterns"],
   },
+  {
+    slug: "qolassist-streaming-two-streams",
+    date: "May 06, 2026",
+    readTime: "6 min read",
+    title: "Streaming Two Streams at Once: ASR Partials + LLM Tokens in One UI",
+    excerpt:
+      "Building QolAssist taught me what 'live' actually means when speech transcription and Claude tokens have to share an event loop without blocking each other.",
+    tags: ["pyqt6", "claude-api", "streaming", "asr"],
+  },
 ];
 
 export default function Blog() {

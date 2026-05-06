@@ -71,6 +71,26 @@ const PROJECTS: Project[] = [
     result:
       "Self-service analytics for the entire non-technical team. Zero SQL literacy required. Ad-hoc data requests to developers eliminated. Named dashboard snapshots for trend comparison over time.",
   },
+  {
+    title: "QolAssist — Real-Time Desktop AI Overlay",
+    tagline: "Speech in. Answers out. Both streaming.",
+    tags: [
+      "Python",
+      "PyQt6",
+      "Vosk",
+      "Anthropic SDK",
+      "WASAPI",
+      "PyInstaller",
+    ],
+    problem:
+      "Most 'AI assistant' demos send one big request and wait for one big answer — and the lag breaks the conversation. I wanted to find out what real-time AI assistance actually feels like when both speech transcription and LLM tokens stream into the UI at the same time.",
+    solution:
+      "A Windows productivity overlay built around two concurrent streams. Local streaming ASR (Vosk) captions live system audio word-by-word in a frameless, always-on-top Transcript panel. Press space and the latest captions are sent to Claude — grounded in a reference text file you maintain — with tokens streaming back into a second always-on-top Answer panel. Audio capture, VAD, and transcription all run on-device; only the Claude API call leaves the machine.",
+    stack:
+      "Python 3.11 · PyQt6 (frameless overlays + signals/slots) · Vosk (streaming ASR on CPU) · soundcard (WASAPI loopback) · Anthropic SDK (streaming + prompt caching) · keyboard (global hotkeys) · PyInstaller (one-folder Windows distribution)",
+    result:
+      "Sub-second caption latency on CPU. ~10x cheaper repeat asks against the same reference file via Anthropic prompt caching. Single-key listen → ask → listen workflow. Bundled as a self-contained ~190 MB Windows folder — no Python install required on the target machine.",
+  },
 ];
 
 export default function Projects() {
