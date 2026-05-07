@@ -14,23 +14,64 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    title: "BIGSELLER Sales Report Automation",
-    tagline: "When there was no public API, I built one.",
+    title: "AutomaQue CRM — Self-Hosted, AI-Augmented Personal CRM",
+    tagline: "Pipedrive replaced. Data owned. AI built in.",
     tags: [
+      "Next.js",
+      "BigQuery",
+      "Claude AI",
       "n8n",
-      "JavaScript",
-      "Cookie Auth",
-      "Reverse-Engineering",
-      "Google Drive",
+      "Gmail API",
+      "Google Calendar",
+      "Vercel",
     ],
     problem:
-      "Client needed daily SKU sales reports for 5,461+ products — but the platform exposed no public API. Manual exports ate 45 minutes of human clicking every single day.",
+      "Off-the-shelf CRMs (Pipedrive, HubSpot) are bloated, charge per seat, and lock your data inside someone else's database. Spreadsheets give you ownership but nothing else — no pipeline, no AI, no email, no calendar. A solo operator running a service business needed all of Pipedrive's smart features, plus modern AI, on their own cloud, with the data sitting in BigQuery for any future analytics or RAG.",
     solution:
-      "Reverse-engineered the internal export API via Chrome DevTools network inspection. Built an n8n polling state machine: POST trigger export → extract processKey → loop checkProcess endpoint → detect completion URL → download .xlsx → save to Google Drive.",
+      "A full-stack CRM running on Vercel with BigQuery as the data store. Drag-and-drop Kanban pipeline with optimistic UI, full Gmail integration with one-click AI-suggested replies, AI-drafted email campaigns with throttled batch send and open tracking, a RAG chatbot that answers plain-English questions over the entire CRM, and AI meeting extraction that reads an email thread and creates a Google Calendar event + linked CRM activity in one click. n8n handles cron-driven email reminders by calling the CRM's API on a schedule — the CRM stays the single source of truth, n8n owns no data.",
     stack:
-      "n8n (self-hosted) · Custom JavaScript Code nodes · Cookie-based auth · Google Drive API · Cron (daily 08:00 SGT)",
+      "Next.js 14 (App Router) · TypeScript · Tailwind · shadcn-style components · BigQuery (9-table schema, soft-delete) · googleapis (Gmail + Calendar OAuth) · Anthropic SDK (Haiku 4.5 for fast paths, Sonnet 4.5 for chatbot reasoning) · NextAuth (Google OAuth + email allowlist) · Vercel Blob · Tiptap · TanStack Query/Table · @dnd-kit · n8n (Docker) · Recharts",
     result:
-      "5,461+ SKUs reported daily, fully hands-off. 40-iteration retry cap with timeout exception. Manual labor reclaimed permanently.",
+      "Phase 1 (contacts, deals, pipeline, activities, notes, attachments, dashboard, search, auth) shipped in a single build push. Phase 2 layered in Gmail + AI replies, email campaigns, RAG chatbot, n8n reminders, and AI calendar extraction. Zero per-seat fees, full data ownership in BigQuery, and a public showcase of all four service offerings — automation, SaaS dev, web dev, lead gen — in one working product.",
+  },
+  {
+    title: "QolAssist — Real-Time Desktop AI Overlay",
+    tagline: "Speech in. Answers out. Both streaming.",
+    tags: [
+      "Python",
+      "PyQt6",
+      "Vosk",
+      "Anthropic SDK",
+      "WASAPI",
+      "PyInstaller",
+    ],
+    problem:
+      "Most 'AI assistant' demos send one big request and wait for one big answer — and the lag breaks the conversation. I wanted to find out what real-time AI assistance actually feels like when both speech transcription and LLM tokens stream into the UI at the same time.",
+    solution:
+      "A Windows productivity overlay built around two concurrent streams. Local streaming ASR (Vosk) captions live system audio word-by-word in a frameless, always-on-top Transcript panel. Press space and the latest captions are sent to Claude — grounded in a reference text file you maintain — with tokens streaming back into a second always-on-top Answer panel. Audio capture, VAD, and transcription all run on-device; only the Claude API call leaves the machine.",
+    stack:
+      "Python 3.11 · PyQt6 (frameless overlays + signals/slots) · Vosk (streaming ASR on CPU) · soundcard (WASAPI loopback) · Anthropic SDK (streaming + prompt caching) · keyboard (global hotkeys) · PyInstaller (one-folder Windows distribution)",
+    result:
+      "Sub-second caption latency on CPU. ~10x cheaper repeat asks against the same reference file via Anthropic prompt caching. Single-key listen → ask → listen workflow. Bundled as a self-contained ~190 MB Windows folder — no Python install required on the target machine.",
+  },
+  {
+    title: "Ask AutomaQue — AI Sales Intelligence",
+    tagline: "Plain English in. Sales data out.",
+    tags: [
+      "Claude AI",
+      "BigQuery",
+      "Natural Language Query",
+      "n8n",
+      "AI Agent",
+    ],
+    problem:
+      "Non-technical stakeholders needed sales insights but couldn't write SQL. Every question meant a developer's time. Ad-hoc analytics requests were eating hours weekly.",
+    solution:
+      "Built a custom AI chat interface wired to live marketplace sales data. Pipeline: raw marketplace orders → BigQuery aggregation → Google Sheets sync via n8n → AI query layer. Business users ask questions in plain English, get data-driven answers instantly. Added a History Log for named snapshots + trend comparison.",
+    stack:
+      "Claude AI · BigQuery · Google Sheets · n8n · Custom AI intelligence layer · JavaScript Code nodes",
+    result:
+      "Self-service analytics for the entire non-technical team. Zero SQL literacy required. Ad-hoc data requests to developers eliminated. Named dashboard snapshots for trend comparison over time.",
   },
   {
     title: "Shopee × Lazada Multi-Market Order Sync",
@@ -53,43 +94,23 @@ const PROJECTS: Project[] = [
       "3,431,798 orders · 15,946 active SKUs · 15.3M units sold, synced continuously across 3 country markets. Real-time dashboard with Hot/Active/Slow/Dead SKU labels, Lazada CVR + visitor metrics, CSV export for stakeholder reporting.",
   },
   {
-    title: "Ask AutomaQue — AI Sales Intelligence",
-    tagline: "Plain English in. Sales data out.",
+    title: "BIGSELLER Sales Report Automation",
+    tagline: "When there was no public API, I built one.",
     tags: [
-      "Claude AI",
-      "BigQuery",
-      "Natural Language Query",
       "n8n",
-      "AI Agent",
+      "JavaScript",
+      "Cookie Auth",
+      "Reverse-Engineering",
+      "Google Drive",
     ],
     problem:
-      "Non-technical stakeholders needed sales insights but couldn't write SQL. Every question meant a developer's time. Ad-hoc analytics requests were eating hours weekly.",
+      "Client needed daily SKU sales reports for 5,461+ products — but the platform exposed no public API. Manual exports ate 45 minutes of human clicking every single day.",
     solution:
-      "Built a custom AI chat interface wired to live marketplace sales data. Pipeline: raw marketplace orders → BigQuery aggregation → Google Sheets sync via n8n → AI query layer. Business users ask questions in plain English, get data-driven answers instantly. Added a History Log for named snapshots + trend comparison.",
+      "Reverse-engineered the internal export API via Chrome DevTools network inspection. Built an n8n polling state machine: POST trigger export → extract processKey → loop checkProcess endpoint → detect completion URL → download .xlsx → save to Google Drive.",
     stack:
-      "Claude AI · BigQuery · Google Sheets · n8n · Custom AI intelligence layer · JavaScript Code nodes",
+      "n8n (self-hosted) · Custom JavaScript Code nodes · Cookie-based auth · Google Drive API · Cron (daily 08:00 SGT)",
     result:
-      "Self-service analytics for the entire non-technical team. Zero SQL literacy required. Ad-hoc data requests to developers eliminated. Named dashboard snapshots for trend comparison over time.",
-  },
-  {
-    title: "QolAssist — Real-Time Desktop AI Overlay",
-    tagline: "Speech in. Answers out. Both streaming.",
-    tags: [
-      "Python",
-      "PyQt6",
-      "Vosk",
-      "Anthropic SDK",
-      "WASAPI",
-      "PyInstaller",
-    ],
-    problem:
-      "Most 'AI assistant' demos send one big request and wait for one big answer — and the lag breaks the conversation. I wanted to find out what real-time AI assistance actually feels like when both speech transcription and LLM tokens stream into the UI at the same time.",
-    solution:
-      "A Windows productivity overlay built around two concurrent streams. Local streaming ASR (Vosk) captions live system audio word-by-word in a frameless, always-on-top Transcript panel. Press space and the latest captions are sent to Claude — grounded in a reference text file you maintain — with tokens streaming back into a second always-on-top Answer panel. Audio capture, VAD, and transcription all run on-device; only the Claude API call leaves the machine.",
-    stack:
-      "Python 3.11 · PyQt6 (frameless overlays + signals/slots) · Vosk (streaming ASR on CPU) · soundcard (WASAPI loopback) · Anthropic SDK (streaming + prompt caching) · keyboard (global hotkeys) · PyInstaller (one-folder Windows distribution)",
-    result:
-      "Sub-second caption latency on CPU. ~10x cheaper repeat asks against the same reference file via Anthropic prompt caching. Single-key listen → ask → listen workflow. Bundled as a self-contained ~190 MB Windows folder — no Python install required on the target machine.",
+      "5,461+ SKUs reported daily, fully hands-off. 40-iteration retry cap with timeout exception. Manual labor reclaimed permanently.",
   },
 ];
 

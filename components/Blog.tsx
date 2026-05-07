@@ -14,31 +14,22 @@ interface Post {
 
 const POSTS: Post[] = [
   {
-    slug: "ai-automation-actually-means-2026",
-    date: "October 20, 2025",
-    readTime: "3 min read",
-    title: "What AI Automation Actually Means in 2026",
-    excerpt:
-      "It's not ChatGPT wrappers. Here's what I'm actually building in production — and why the hard part is the boring part.",
-    tags: ["ai-automation", "n8n", "opinion"],
-  },
-  {
-    slug: "reverse-engineering-undocumented-api",
-    date: "December 15, 2025",
-    readTime: "5 min read",
-    title: "Reverse-Engineering an Undocumented API with Chrome DevTools",
-    excerpt:
-      "The BIGSELLER story — how I turned a closed platform into an open one with DevTools, cookies, and a polling state machine.",
-    tags: ["reverse-engineering", "chrome-devtools", "n8n"],
-  },
-  {
-    slug: "hmac-sha256-signers-from-scratch",
-    date: "February 08, 2026",
+    slug: "direct-context-rag-no-vector-db",
+    date: "May 07, 2026",
     readTime: "6 min read",
-    title: "Writing HMAC/SHA256 Signers from Scratch for Shopee and Lazada",
+    title: "Direct-Context RAG: When You Don't Need a Vector Database",
     excerpt:
-      "What the marketplace docs leave out. Practical guide with code snippets that actually work in production.",
-    tags: ["hmac", "shopee-api", "lazada-api"],
+      "Building the AutomaQue CRM chatbot, I skipped embeddings entirely. For personal-scale data, the right answer is to pass the whole dataset as context — and the upgrade path is still wide open.",
+    tags: ["rag", "claude-api", "bigquery", "architecture"],
+  },
+  {
+    slug: "qolassist-streaming-two-streams",
+    date: "May 06, 2026",
+    readTime: "6 min read",
+    title: "Streaming Two Streams at Once: ASR Partials + LLM Tokens in One UI",
+    excerpt:
+      "Building QolAssist taught me what 'live' actually means when speech transcription and Claude tokens have to share an event loop without blocking each other.",
+    tags: ["pyqt6", "claude-api", "streaming", "asr"],
   },
   {
     slug: "production-n8n-patterns",
@@ -50,13 +41,31 @@ const POSTS: Post[] = [
     tags: ["n8n", "production", "patterns"],
   },
   {
-    slug: "qolassist-streaming-two-streams",
-    date: "May 06, 2026",
+    slug: "hmac-sha256-signers-from-scratch",
+    date: "February 08, 2026",
     readTime: "6 min read",
-    title: "Streaming Two Streams at Once: ASR Partials + LLM Tokens in One UI",
+    title: "Writing HMAC/SHA256 Signers from Scratch for Shopee and Lazada",
     excerpt:
-      "Building QolAssist taught me what 'live' actually means when speech transcription and Claude tokens have to share an event loop without blocking each other.",
-    tags: ["pyqt6", "claude-api", "streaming", "asr"],
+      "What the marketplace docs leave out. Practical guide with code snippets that actually work in production.",
+    tags: ["hmac", "shopee-api", "lazada-api"],
+  },
+  {
+    slug: "reverse-engineering-undocumented-api",
+    date: "December 15, 2025",
+    readTime: "5 min read",
+    title: "Reverse-Engineering an Undocumented API with Chrome DevTools",
+    excerpt:
+      "The BIGSELLER story — how I turned a closed platform into an open one with DevTools, cookies, and a polling state machine.",
+    tags: ["reverse-engineering", "chrome-devtools", "n8n"],
+  },
+  {
+    slug: "ai-automation-actually-means-2026",
+    date: "October 20, 2025",
+    readTime: "3 min read",
+    title: "What AI Automation Actually Means in 2026",
+    excerpt:
+      "It's not ChatGPT wrappers. Here's what I'm actually building in production — and why the hard part is the boring part.",
+    tags: ["ai-automation", "n8n", "opinion"],
   },
 ];
 
