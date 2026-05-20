@@ -14,6 +14,15 @@ interface Post {
 
 const POSTS: Post[] = [
   {
+    slug: "qorex-five-persona-ai-team",
+    date: "May 20, 2026",
+    readTime: "10 min read",
+    title: "How I Built a Five-Persona AI Team That Ships Production Work",
+    excerpt:
+      "A working-method walk-through of QoreX: five Claude-powered agents with names, roles, handoffs, and a shared brain that ships real production work.",
+    tags: ["qorex", "claude-code", "ai-agents", "workflow"],
+  },
+  {
     slug: "direct-context-rag-no-vector-db",
     date: "May 07, 2026",
     readTime: "6 min read",
