@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Jeffrey Quemuel",
     images: [
       {
-        url: "https://jeffreyquemuel.cloud/images/qorex/convergence.jpg",
+        url: "https://jeffreyquemuel.cloud/images/qorex/convergence.jpg?v=2",
         width: 2560,
         height: 1440,
         alt: "QoreX AI team convergence artwork from Jeffrey Quemuel's portfolio",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "AI AGENTS QoreX - Jeffrey Quemuel",
     description:
       "Six-part AI operating system. One shared brain. Real artifacts. Meet QoreX: Jeffrey, Hiru, Storm, Rune, Forge, and Echo.",
-    images: ["https://jeffreyquemuel.cloud/images/qorex/convergence.jpg"],
+    images: ["https://jeffreyquemuel.cloud/images/qorex/convergence.jpg?v=2"],
   },
 };
 
