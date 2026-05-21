@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Jeffrey Quemuel",
     images: [
       {
-        url: "/images/qorex/convergence.jpg",
+        url: "https://jeffreyquemuel.cloud/images/qorex/convergence.jpg",
         width: 2560,
         height: 1440,
         alt: "QoreX AI team convergence artwork from Jeffrey Quemuel's portfolio",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Jeffrey Quemuel - AI Systems Engineer",
     description:
       "No API? I build one. No workflow? I automate it. No prompt? I engineer it. 3.4M+ orders automated across SG/MY/TH.",
-    images: ["/images/qorex/convergence.jpg"],
+    images: ["https://jeffreyquemuel.cloud/images/qorex/convergence.jpg"],
   },
   keywords: [
     "n8n automation engineer Philippines",
