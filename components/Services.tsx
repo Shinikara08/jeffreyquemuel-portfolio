@@ -74,19 +74,9 @@ export default function Services() {
           Services
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {TOP_ROW_SERVICES.map((service, i) => (
+        <div className="-mx-6 md:-mx-12 px-6 md:px-12 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6 scroll-smooth [scrollbar-width:thin]">
+          {[...TOP_ROW_SERVICES, ...BOTTOM_ROW_SERVICES].map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 md:max-w-4xl md:mx-auto">
-          {BOTTOM_ROW_SERVICES.map((service, i) => (
-            <ServiceCard
-              key={service.title}
-              service={service}
-              index={TOP_ROW_SERVICES.length + i}
-            />
           ))}
         </div>
       </div>
@@ -109,16 +99,16 @@ function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ delay: index * 0.1 }}
-      className="group rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-8 transition hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(103,232,249,0.15)]"
+      className="group shrink-0 snap-start w-[80vw] max-w-[300px] flex flex-col rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-6 transition hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(103,232,249,0.15)]"
     >
-      <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 mb-6">
-        <Icon className="h-6 w-6 text-primary" />
+      <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 mb-4">
+        <Icon className="h-5 w-5 text-primary" />
       </div>
-      <h3 className="text-xl font-bold uppercase tracking-wide mb-3">
+      <h3 className="text-base font-bold uppercase tracking-wide mb-2 leading-tight">
         {service.title}
       </h3>
-      <p className="text-muted leading-relaxed mb-6">{service.description}</p>
-      <a href="#contact" className="text-sm text-primary group-hover:underline">
+      <p className="text-sm text-muted leading-relaxed mb-4">{service.description}</p>
+      <a href="#contact" className="mt-auto text-xs text-primary group-hover:underline">
         Get a Quote →
       </a>
     </motion.div>

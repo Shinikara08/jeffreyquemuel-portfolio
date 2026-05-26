@@ -179,14 +179,8 @@ const PROJECTS: Project[] = [
     screenshots: [
       {
         src: "/images/projects/tasq_tab.png",
-        alt: "TasQ Tab early version - task panel with subtasks, embedded Hubstaff timer, Gmail status, and Calendar widgets",
-        caption: "Original layout (May 2026)",
-        aspect: "tall",
-      },
-      {
-        src: "/images/projects/tasq_tab_v1.39.png",
-        alt: "TasQ Tab current build with QoreX header, lock and minimize controls, filter timezones bar, four world clocks (Manila, London, Sydney, Helsinki), Portfolio task with five subtasks, notepad with a test note, Gmail and Calendar panels, and live ClickUp sync status",
-        caption: "Current build - realtime ClickUp sync, notepad, world clocks",
+        alt: "TasQ Tab desktop panel showing subtasks, embedded Hubstaff timer, Gmail status, Calendar widgets, and ClickUp sync",
+        caption: "Desktop execution cockpit",
         aspect: "tall",
       },
     ],
@@ -251,7 +245,7 @@ export default function Projects() {
           Three automations, running in production today.
         </motion.p>
 
-        <div className="space-y-8">
+        <div className="-mx-6 md:-mx-12 px-6 md:px-12 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scroll-smooth [scrollbar-width:thin]">
           {PROJECTS.map((project, i) => (
             <motion.article
               key={project.title}
@@ -259,19 +253,19 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-8 md:p-10 transition hover:border-primary/40 hover:shadow-[0_0_40px_rgba(103,232,249,0.1)]"
+              className="shrink-0 snap-start w-[85vw] max-w-[400px] flex flex-col rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-6 transition hover:border-primary/40 hover:shadow-[0_0_40px_rgba(103,232,249,0.1)]"
             >
-              <p className="text-primary italic text-sm md:text-base mb-3">
+              <p className="text-primary italic text-xs mb-2">
                 &ldquo;{project.tagline}&rdquo;
               </p>
-              <h3 className="text-2xl md:text-4xl font-bold uppercase tracking-wide mb-4">
+              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide mb-3 leading-tight">
                 {project.title}
               </h3>
-              <div className="flex flex-wrap gap-2 mb-8">
-                {project.tags.map((tag) => (
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {project.tags.slice(0, 5).map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-primary/20 px-3 py-1 text-xs text-primary"
+                    className="rounded-full border border-primary/20 px-2 py-0.5 text-[10px] text-primary"
                   >
                     {tag}
                   </span>
@@ -279,14 +273,14 @@ export default function Projects() {
               </div>
 
               {project.links && project.links.length > 0 && (
-                <div className="flex flex-wrap gap-3 mb-8">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.links.map((link) => (
                     <a
                       key={link.href}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition hover:border-primary hover:bg-primary/20"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition hover:border-primary hover:bg-primary/20"
                     >
                       {link.label}
                       <span aria-hidden="true">↗</span>
@@ -296,18 +290,25 @@ export default function Projects() {
               )}
 
               {project.screenshots && project.screenshots.length > 0 && (
-                <ProjectGallery screenshots={project.screenshots} />
+                <figure className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-background/50">
+                  <div className="relative aspect-[4/3]">
+                    <ZoomableImage
+                      src={project.screenshots[0].src}
+                      alt={project.screenshots[0].alt}
+                      sizes="(max-width: 768px) 85vw, 400px"
+                      className="object-contain"
+                    />
+                  </div>
+                </figure>
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <CaseStudyBlock label="The Problem" body={project.problem} />
-                <CaseStudyBlock label="The Solution" body={project.solution} />
-                <CaseStudyBlock label="The Stack" body={project.stack} />
-                <CaseStudyBlock
-                  label="The Result"
-                  body={project.result}
-                  highlight
-                />
+              <div className="mt-auto rounded-xl border border-primary/30 bg-primary/5 px-4 py-3">
+                <p className="text-[10px] uppercase tracking-widest text-primary mb-1.5">
+                  The Result
+                </p>
+                <p className="text-xs leading-relaxed text-muted">
+                  {project.result}
+                </p>
               </div>
             </motion.article>
           ))}
@@ -317,70 +318,3 @@ export default function Projects() {
   );
 }
 
-function ProjectGallery({
-  screenshots,
-}: {
-  screenshots: ProjectScreenshot[];
-}) {
-  return (
-    <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
-      {screenshots.map((screenshot, index) => (
-        <figure
-          key={screenshot.src}
-          className={`overflow-hidden rounded-xl border border-white/10 bg-background/50 ${
-            screenshots.length === 1 ? "md:col-span-2" : ""
-          } ${index === 0 && screenshots.length > 2 ? "md:col-span-2" : ""}`}
-        >
-          <div
-            className={`relative ${
-              screenshot.aspect === "square"
-                ? "aspect-square"
-                : screenshot.aspect === "tall"
-                ? "aspect-[9/16] max-h-[720px]"
-                : "aspect-[16/9]"
-            }`}
-          >
-            <ZoomableImage
-              src={screenshot.src}
-              alt={screenshot.alt}
-              sizes={
-                screenshots.length === 1 || index === 0
-                  ? "(max-width: 768px) 100vw, 1024px"
-                  : "(max-width: 768px) 100vw, 512px"
-              }
-              className="object-contain"
-            />
-          </div>
-          <figcaption className="border-t border-white/10 px-4 py-3 text-xs uppercase tracking-widest text-muted">
-            {screenshot.caption}
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-  );
-}
-
-function CaseStudyBlock({
-  label,
-  body,
-  highlight = false,
-}: {
-  label: string;
-  body: string;
-  highlight?: boolean;
-}) {
-  return (
-    <div>
-      <div className="text-xs uppercase tracking-widest text-primary mb-2">
-        {label}
-      </div>
-      <p
-        className={`leading-relaxed ${
-          highlight ? "text-foreground" : "text-muted"
-        }`}
-      >
-        {body}
-      </p>
-    </div>
-  );
-}
