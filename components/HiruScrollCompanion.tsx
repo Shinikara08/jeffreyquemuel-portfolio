@@ -88,7 +88,7 @@ export default function HiruScrollCompanion() {
       <div className="relative h-screen w-screen">
         <motion.div
           aria-label="Hiru, floating homepage guide"
-          className="pointer-events-auto absolute left-0 top-0 block h-24 w-24 rounded-full"
+          className="pointer-events-auto absolute left-0 top-0 block h-24 w-24 origin-top-left scale-50 rounded-full"
           initial={false}
           animate={
             reduceMotion

@@ -120,12 +120,12 @@ export default function About() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:max-w-3xl md:mx-auto">
             <CountUpTile
-              target={100}
+              target={300}
               suffix="+"
               label="Workflows in Production"
             />
             <CountUpTile
-              target={10000}
+              target={250000}
               suffix="+"
               format="comma"
               label="HubSpot Enrichments"

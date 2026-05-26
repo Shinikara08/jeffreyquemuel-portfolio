@@ -16,9 +16,11 @@ const EXPERIENCES: Role[] = [
     company: "Liberty Music PR · (Remote)",
     current: true,
     achievements: [
-      "Recently started — deliverables in progress",
+      "Architecting n8n workflow for HubSpot artist-contact enrichment: deep web search + AI extraction auto-populates each artist's music label into the Company Name field, replacing manual research of hundreds of contacts",
+      "HubSpot Private App integration: contacts.read + contacts.write scopes, anti-contamination checks, 'None' fallback when no label is found",
+      "Workflow architecture finalized (v2); prompt-engineering and rollout in progress",
     ],
-    tags: ["Software Development", "AI Automation", "Data Engineering"],
+    tags: ["n8n", "HubSpot API", "AI Automation", "Data Enrichment", "JavaScript"],
   },
   {
     role: "AI Systems Engineer",

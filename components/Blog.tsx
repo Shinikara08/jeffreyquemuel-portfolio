@@ -121,7 +121,7 @@ export default function Blog() {
           to break.
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="-mx-6 md:-mx-12 px-6 md:px-12 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scroll-smooth [scrollbar-width:thin]">
           {POSTS.map((post, i) => (
             <motion.div
               key={post.slug}
@@ -129,6 +129,7 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: i * 0.1 }}
+              className="snap-start shrink-0 w-[85vw] max-w-[420px]"
             >
               <Link href={`/blog/${post.slug}`} className="block h-full">
                 <article className="group relative h-full rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-8 transition hover:border-primary/40 hover:shadow-[0_0_40px_rgba(103,232,249,0.15)] hover:-translate-y-1">
