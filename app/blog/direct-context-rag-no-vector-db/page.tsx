@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
@@ -40,6 +41,12 @@ export default function Post() {
         vector store. No retrieval pipeline. Here&rsquo;s why &mdash; and when
         you should make the same call.
       </p>
+
+      <BlogImage
+        src="/images/projects/automaque_crm_analysis.png"
+        alt="AutomaQue CRM AI chat answer analyzing follow-up data and explaining which CRM fields are missing"
+        caption="AutomaQue CRM answering against the live CRM snapshot"
+      />
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         Why Everyone Reaches for Vectors First
@@ -107,6 +114,12 @@ export default function Post() {
         prompt with prompt caching enabled. The user&rsquo;s message becomes
         the user prompt.
       </p>
+
+      <BlogImage
+        src="/images/projects/automaque_crm_dashboard1.png"
+        alt="AutomaQue CRM dashboard showing pipeline value, won revenue, win rate, contacts, and charts"
+        caption="The same CRM state that feeds the direct-context assistant"
+      />
 
       <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
         <code>{`// /api/chat — pseudocode

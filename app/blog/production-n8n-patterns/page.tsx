@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
@@ -26,6 +27,12 @@ export default function Post() {
         automations that handle 3.4M+ orders hands-off, here are the four
         patterns that show up in every workflow I ship.
       </p>
+
+      <BlogImage
+        src="/images/projects/dashboard_ecommerce.png"
+        alt="Production sales dashboard showing live marketplace order and SKU metrics"
+        caption="Production workflows are only useful when the dashboard stays trustworthy"
+      />
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         Pattern 1: Idempotency Keys
@@ -124,6 +131,12 @@ const processKey = $node["Extract Process Key"].json.processKey;`}</code>
         referenced in every one of the next 40 iterations. No manual passing
         through loop variables. No state loss.
       </p>
+
+      <BlogImage
+        src="/images/projects/dashboard_ecommerce2.png"
+        alt="Ask AutomaQue chat interface for asking sales questions across Shopee and Lazada metrics"
+        caption="The same production data exposed through an AI query layer"
+      />
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         Pattern 4: Dev/Prod Environment Separation

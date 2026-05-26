@@ -12,8 +12,8 @@ interface Role {
 
 const EXPERIENCES: Role[] = [
   {
-    role: "AI Automation Engineer",
-    company: "E-commerce company · Singapore (Remote)",
+    role: "AI Systems Engineer",
+    company: "Boughtnex LTD · Singapore (Remote)",
     current: true,
     achievements: [
       "Reverse-engineered undocumented export API; eliminated manual reporting for 5,461+ SKUs",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
@@ -39,6 +40,12 @@ export default function Post() {
         decisions, the threading model, and the deadlock that taught me what{" "}
         <code className="text-primary">thread.join()</code> actually does.
       </p>
+
+      <BlogImage
+        src="/images/projects/qolassist.png"
+        alt="QolAssist desktop overlay showing interviewer transcript on the left and streamed Claude answers on the right"
+        caption="QolAssist running as a transparent desktop overlay"
+      />
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         Vosk Over Whisper: Why Perceived Latency Wins

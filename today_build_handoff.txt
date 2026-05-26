@@ -1,0 +1,305 @@
+Today build handoff for Jeffrey Quemuel portfolio
+
+Repo:
+C:\Users\qshin\Documents\Claude\Projects\jeffreyquemuel-portfolio
+
+Stack:
+- Next.js 16.2.4
+- App Router
+- React 19.2.4
+- Tailwind CSS v4 via @import "tailwindcss"
+- Framer Motion
+- Lucide React
+- next/image
+
+Build command used successfully:
+npm.cmd run build
+
+Important note:
+PowerShell blocks npm.ps1 on this machine, so use npm.cmd instead of npm.
+
+Main routes touched:
+- /
+- /qorex
+- /blog/how-i-built-a-five-persona-ai-team
+- /blog/qorex-five-persona-ai-team
+
+Top navigation:
+- Added global fixed/frozen top nav in components/TopNav.tsx.
+- Rendered TopNav in app/layout.tsx.
+- Removed old bottom FloatingDock render from app/page.tsx.
+- Body offset added with pt-16.
+- Global scroll offset added with scroll-padding-top: 5rem.
+- Nav label for QoreX is exactly:
+  AI AGENTS QoreX
+- User specifically requested no em dash and exact QoreX casing.
+
+Homepage:
+- app/page.tsx now renders:
+  - StarField
+  - FluidCursor
+  - HiruScrollCompanion
+  - Hero
+  - TechStack
+  - About
+  - Services
+  - Projects
+  - Experience
+  - Blog
+  - Contact
+  - Footer
+
+Hero:
+- components/HeroTitleRoller.tsx animates the title line vertically.
+- Current rotating title sequence:
+  1. AI SYSTEMS ENGINEER
+  2. DATA EXPERT
+  3. CRM DEVELOPER
+  4. SOFTWARE DEVELOPER
+  5. ANDROID APP DEVELOPER
+- User asked to replace AI Automation Engineer everywhere with AI Systems Engineer.
+- Verified by search earlier that old AI Automation Engineer text was removed.
+
+Hiru homepage guide:
+- Added components/HiruScrollCompanion.tsx.
+- Hiru appears only on xl/desktop screens.
+- Hiru moves between two positions based on a 4x4 screen grid:
+  - tile 5
+  - tile 12
+- Motion is diagonal between those positions.
+- When on the right side, Hiru image is mirrored so he faces inward.
+- Added orange/blue autumn aura:
+  - rotating cyan particles
+  - rotating orange/autumn particles
+  - soft mixed glow under Hiru
+- Hiru dialog behavior:
+  - On home/top:
+    "Hi, I'm Hiru. Let me guide you."
+  - Shortly after:
+    "Click me."
+  - When clicked:
+    "Where do you want to go?"
+  - Dropdown choices:
+    Home, About, Services, Projects, Experience, Blog, Contact
+  - Clicking a choice scrolls to that section and closes the dropdown.
+- On non-home sections, intro does not repeat. Hiru shows section context:
+  - About: "This is the origin story."
+  - Services: "These are the systems Jeffrey can build."
+  - Projects: "Here are the shipped artifacts."
+  - Experience: "Proof from the field lives here."
+  - Blog: "Field notes and technical deep dives."
+  - Contact: "Ready to open a portal?"
+
+About refresh:
+- Added components/RotatingTitle.tsx.
+- Added components/CountUpTile.tsx.
+- Updated components/About.tsx.
+- About bio rewritten from the provided bio_rewrite.md.
+- Stats use animated counting.
+- About title now uses RotatingTitle plus Remote from the Philippines.
+
+Services:
+- Updated components/Services.tsx.
+- Expanded services into seven cards.
+
+Projects and screenshots:
+- Updated components/Projects.tsx.
+- Added project screenshot gallery support.
+- Project screenshots are clickable and zoomable with ZoomableImage.
+- Added or used screenshots under public/images/projects/.
+- Screenshots used include:
+  - automaque_crm_ai_campaign1.png
+  - automaque_crm_ai_campaign2.png
+  - automaque_crm_ai_campaign3.png
+  - automaque_crm_analysis.png
+  - automaque_crm_dashboard1.png
+  - dashboard_ecommerce.png
+  - dashboard_ecommerce2.png
+  - qolassist.png
+  - tasq_tab.png.png
+- TasQ Tab project was added.
+
+Zoomable images:
+- Added components/ZoomableImage.tsx.
+- Added components/BlogImage.tsx.
+- Zoom behavior applies to project screenshots and blog screenshots.
+- Zoom behavior does NOT apply to QoreX carousel or QoreX agent portraits.
+- Modal behavior:
+  - click image opens full-screen modal
+  - Escape closes
+  - backdrop click closes
+  - body scroll locks while open
+  - close button uses Lucide X
+
+QoreX page:
+- Added app/qorex/page.tsx.
+- Visible title:
+  AI AGENTS QoreX
+- Current subhead:
+  Six-part AI operating system. One shared brain. Real artifacts.
+- QoreX now includes Jeffrey plus five agents.
+- Agent order:
+  1. Jeffrey
+  2. Hiru
+  3. Storm
+  4. Rune
+  5. Forge
+  6. Echo
+- Jeffrey was added as the human operator / systems architect.
+- Jeffrey text:
+  "Jeffrey is the human operator and systems architect behind QoreX. I decide the goal, set the truth rules, approve the handoffs, and ship the final artifact. The agents expand my working surface, but the accountability stays with me."
+- Agent section anchors:
+  - /qorex#jeffrey
+  - /qorex#hiru
+  - /qorex#storm
+  - /qorex#rune
+  - /qorex#forge
+  - /qorex#echo
+- Every lower agent portrait is wrapped in a link to its own /qorex#agent anchor.
+
+QoreX carousel:
+- Component:
+  components/QoreXCarousel.tsx
+- Final behavior:
+  - no auto-rotation
+  - no selected-card enlargement
+  - no hover zoom
+  - no image zoom
+  - no visible scrollbar
+  - draggable by cursor/touch
+  - left/right arrow buttons move one portrait at a time
+  - arrows wrap at the ends
+  - clicking a portrait jumps to the matching lower agent section
+  - click updates URL to /qorex#agent
+  - keyboard Enter/Space also jumps to the section
+- Important implementation note:
+  - The carousel card itself handles clicks now.
+  - A nested Link was removed because drag pointer handling was swallowing clicks.
+  - Pointer capture was removed so click detection works.
+
+QoreX images:
+- Current important assets under public/images/qorex:
+  - convergence.jpg
+  - jeffrey-nebula.jpg
+  - hiru-convergence.jpg
+  - storm-nebula.jpg
+  - rune-nebula.jpg
+  - forge-nebula.jpg
+  - echo-convergence.jpg
+  - storm-convergence.jpg
+  - rune-convergence.jpg
+  - forge-convergence.jpg
+  - hiru-story.jpg
+  - rune-story.jpg
+  - forge-story.jpg
+  - echo.png
+  - hiru.png
+  - storm.png
+  - rune.png
+  - forge.png
+- New Nebula Horizon images copied in:
+  - public/images/qorex/jeffrey-nebula.jpg
+  - public/images/qorex/storm-nebula.jpg
+  - public/images/qorex/rune-nebula.jpg
+  - public/images/qorex/forge-nebula.jpg
+
+QoreX page image usage:
+- Jeffrey uses:
+  /images/qorex/jeffrey-nebula.jpg
+- Hiru uses:
+  /images/qorex/hiru-convergence.jpg
+- Storm uses:
+  /images/qorex/storm-nebula.jpg
+- Rune uses:
+  /images/qorex/rune-nebula.jpg
+- Forge uses:
+  /images/qorex/forge-nebula.jpg
+- Echo uses:
+  /images/qorex/echo-convergence.jpg
+- Hero/convergence image uses:
+  /images/qorex/convergence.jpg
+
+QoreX blog:
+- Existing page:
+  app/blog/qorex-five-persona-ai-team/page.tsx
+- Alias route:
+  app/blog/how-i-built-a-five-persona-ai-team/page.tsx
+- Alias re-exports the QoreX blog page and metadata.
+- Blog listing now uses slug:
+  how-i-built-a-five-persona-ai-team
+- Added h3 anchor IDs:
+  - storm
+  - rune
+  - forge
+  - echo
+  - hiru
+- Final blog image usage:
+  - Storm: /images/qorex/storm-nebula.jpg
+  - Rune: /images/qorex/rune-nebula.jpg
+  - Forge: /images/qorex/forge-nebula.jpg
+  - Echo: /images/qorex/echo-convergence.jpg
+  - Hiru: /images/qorex/hiru-convergence.jpg
+
+Other blog/project image updates:
+- Added screenshots to matching blog posts, including:
+  - direct-context-rag-no-vector-db
+  - qolassist-streaming-two-streams
+  - hmac-sha256-signers-from-scratch
+  - production-n8n-patterns
+  - ai-automation-actually-means-2026
+
+Files added:
+- components/TopNav.tsx
+- components/QoreXCarousel.tsx
+- components/ZoomableImage.tsx
+- components/BlogImage.tsx
+- components/RotatingTitle.tsx
+- components/CountUpTile.tsx
+- components/HeroTitleRoller.tsx
+- components/HiruScrollCompanion.tsx
+- app/qorex/page.tsx
+- app/blog/how-i-built-a-five-persona-ai-team/page.tsx
+- today_build_handoff.txt
+- public/images/projects/*
+- public/images/qorex/*
+- public/videos/qorex/storm.mp4 exists but Storm is currently using an image, not the video.
+
+Files modified:
+- app/layout.tsx
+- app/page.tsx
+- app/globals.css
+- components/About.tsx
+- components/Blog.tsx
+- components/Experience.tsx
+- components/Hero.tsx
+- components/Projects.tsx
+- components/Services.tsx
+- app/blog/qorex-five-persona-ai-team/page.tsx
+- app/blog/ai-automation-actually-means-2026/page.tsx
+- app/blog/direct-context-rag-no-vector-db/page.tsx
+- app/blog/hmac-sha256-signers-from-scratch/page.tsx
+- app/blog/production-n8n-patterns/page.tsx
+- app/blog/qolassist-streaming-two-streams/page.tsx
+
+Validation:
+- Ran npm.cmd run build many times after changes.
+- Final build result:
+  passed
+- Latest build generated static routes:
+  - /
+  - /blog/ai-automation-actually-means-2026
+  - /blog/direct-context-rag-no-vector-db
+  - /blog/hmac-sha256-signers-from-scratch
+  - /blog/how-i-built-a-five-persona-ai-team
+  - /blog/production-n8n-patterns
+  - /blog/qolassist-streaming-two-streams
+  - /blog/qorex-five-persona-ai-team
+  - /blog/reverse-engineering-undocumented-api
+  - /qorex
+
+Current git/worktree note:
+- Worktree has many modified and untracked files from today.
+- There was already an unrelated .gitignore modification before some of this work:
+  - .vercel
+  - .env*.local
+- Do not revert user or unrelated changes unless Jeffrey explicitly asks.

@@ -11,23 +11,23 @@ export const metadata: Metadata = {
 
 const agents = {
   storm: {
-    src: "/images/qorex/storm.png",
-    alt: "Storm, a floating cathedral spirit surrounded by blue and pink energy currents",
+    src: "/images/qorex/storm-nebula.jpg",
+    alt: "Storm as a nebula horizon strategist facing a glowing spell circle",
   },
   rune: {
-    src: "/images/qorex/rune.png",
-    alt: "Rune, a silver-haired scribe holding a glowing blue rune",
+    src: "/images/qorex/rune-nebula.jpg",
+    alt: "Rune holding a golden sigil while floating runestones circle her",
   },
   forge: {
-    src: "/images/qorex/forge.png",
-    alt: "Forge, a cyber-mage carrying a glowing keyboard through a code-city",
+    src: "/images/qorex/forge-nebula.jpg",
+    alt: "Forge holding a keyboard hammer in a red nebula forge chamber",
   },
   echo: {
-    src: "/images/qorex/echo.png",
+    src: "/images/qorex/echo-convergence.jpg",
     alt: "Echo, a haloed priestess surrounded by ceremonial script and glyphs",
   },
   hiru: {
-    src: "/images/qorex/hiru.png",
+    src: "/images/qorex/hiru-convergence.jpg",
     alt: "Hiru, a black and white wolf etched with glowing runes",
   },
 };
@@ -44,15 +44,17 @@ function AgentImage({
   return (
     <figure
       className={`relative my-8 overflow-hidden rounded-2xl border border-white/10 bg-surface/30 ${
-        wide ? "aspect-[16/9]" : "mx-auto aspect-[3/4] max-w-sm"
+        wide ? "aspect-[16/9]" : "aspect-[16/9]"
       }`}
     >
       <Image
         src={src}
         alt={alt}
         fill
-        sizes={wide ? "(max-width: 768px) 100vw, 768px" : "384px"}
-        className="object-cover"
+        sizes={wide ? "(max-width: 768px) 100vw, 768px" : "(max-width: 768px) 100vw, 768px"}
+        quality={100}
+        unoptimized
+        className="object-contain"
       />
     </figure>
   );
@@ -64,7 +66,7 @@ export default function Post() {
       date="May 20, 2026"
       readTime="10 min read"
       title="How I Built a Five-Persona AI Team That Ships Production Work"
-      subtitle="A working-method walk-through, not a thought piece."
+      subtitle="A working-method walk-through, not a thought piece. The same five agents that wrote this blog post also rewrote my CV this week, deployed a yt-dlp microservice, and renamed themselves."
       tags={["qorex", "claude-code", "ai-agents", "workflow"]}
     >
       <p>
@@ -114,7 +116,10 @@ export default function Post() {
         Meet The Team
       </h2>
 
-      <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide pt-4">
+      <h3
+        id="storm"
+        className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
+      >
         Storm — the cathedral spirit, brainstormer
       </h3>
       <AgentImage {...agents.storm} />
@@ -135,7 +140,10 @@ export default function Post() {
         &ldquo;build this thing you already built and killed last year.&rdquo;
       </p>
 
-      <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide pt-4">
+      <h3
+        id="rune"
+        className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
+      >
         Rune — the silver scribe-witch, prompt master
       </h3>
       <AgentImage {...agents.rune} />
@@ -155,7 +163,10 @@ export default function Post() {
         she replies: <em>&ldquo;Pick three. I carve one.&rdquo;</em>
       </p>
 
-      <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide pt-4">
+      <h3
+        id="forge"
+        className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
+      >
         Forge — the cyber-mage, builder
       </h3>
       <AgentImage {...agents.forge} />
@@ -175,7 +186,10 @@ export default function Post() {
         guess. Bounces are healthy. They mean the spec needs another pass.
       </p>
 
-      <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide pt-4">
+      <h3
+        id="echo"
+        className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
+      >
         Echo — the haloed priestess, summarizer
       </h3>
       <AgentImage {...agents.echo} />
@@ -202,7 +216,10 @@ export default function Post() {
         history.
       </p>
 
-      <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide pt-4">
+      <h3
+        id="hiru"
+        className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
+      >
         Hiru — the wolf, outward voice
       </h3>
       <AgentImage {...agents.hiru} />
@@ -250,11 +267,11 @@ export default function Post() {
         One Real Run: The CV V5 Build
       </h2>
       <p>
-        Pelozden RSS hired me as a Vibe Coder at PHP 120,000 per month, hybrid
-        in Clark Freeport Zone. The offer was conditional on an updated CV. The
-        v4 resume positioned me as an e-commerce automation engineer. The role
-        they hired me for reads me as a Vibe Coder. The CV needed to close that
-        gap.
+        Pelozden RSS interviewed me for a Vibe Coder role at PHP 120,000 per
+        month, hybrid in Clark Freeport Zone. The next step was an updated CV.
+        The v4 resume positioned me as an e-commerce automation engineer. The
+        role they&rsquo;re considering reads me as a Vibe Coder. The CV needed to
+        close that gap before the follow-up.
       </p>
       <p>
         I opened the cathedral: <code className="text-primary">/storm</code>.
@@ -356,12 +373,13 @@ Layer 4 (hybrid)              ICE: 8.3   Build Now`}</code>
         Stage 5: Hiru
       </h3>
       <p>
-        While Echo archives, Hiru drafts the negotiation email. The offer was
-        PHP 120,000 per month for 3 days on-site. I wanted to propose PHP
-        100,000 per month for 1 day on-site: a pay cut in exchange for less
-        commute, since Tagaytay to Clark is 3 hours each way. Hiru wrote the
-        email in my voice: no buzzwords, specific time math, and a flexibility
-        clause for high-leverage in-person days.
+        While Echo archives, Hiru is drafting the interview follow-up with
+        counter-terms. The role was framed at PHP 120,000 per month for 3 days
+        on-site. I want to propose PHP 100,000 per month for 1 day on-site: a
+        pay cut in exchange for less commute, since Tagaytay to Clark is 3
+        hours each way. Hiru wrote the email in my voice: no buzzwords,
+        specific time math, and a flexibility clause for high-leverage
+        in-person days.
       </p>
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
@@ -464,6 +482,16 @@ Layer 4 (hybrid)              ICE: 8.3   Build Now`}</code>
         If you&rsquo;ve been thinking about how to work with AI as a teammate
         instead of a tool, this is one shape that works. Steal the architecture.
         Adapt the voices. Build your own team. Send me what you make.
+      </p>
+      <p>
+        — Jeffrey
+        <br />
+        <a
+          href="https://jeffreyquemuel.cloud"
+          className="text-primary hover:underline"
+        >
+          jeffreyquemuel.cloud
+        </a>
       </p>
     </BlogPostLayout>
   );

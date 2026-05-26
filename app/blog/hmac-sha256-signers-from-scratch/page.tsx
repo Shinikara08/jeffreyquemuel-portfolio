@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
@@ -25,6 +26,12 @@ export default function Post() {
         break you.
       </p>
       <p>Here&rsquo;s what I learned writing both from scratch in JavaScript.</p>
+
+      <BlogImage
+        src="/images/projects/dashboard_ecommerce.png"
+        alt="Dark sales dashboard showing Shopee order totals, units sold, active SKUs, zero-sales SKUs, and top SKU table"
+        caption="The signed Shopee/Lazada sync feeding a live sales dashboard"
+      />
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         Why HMAC/SHA256 Signing Exists

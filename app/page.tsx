@@ -9,13 +9,14 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import StarField from "@/components/StarField";
 import FluidCursor from "@/components/FluidCursor";
-import FloatingDock from "@/components/FloatingDock";
+import HiruScrollCompanion from "@/components/HiruScrollCompanion";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
       <StarField />
       <FluidCursor />
+      <HiruScrollCompanion />
       <Hero />
       <TechStack />
       <About />
@@ -25,7 +26,6 @@ export default function Home() {
       <Blog />
       <Contact />
       <Footer />
-      <FloatingDock />
     </main>
   );
 }

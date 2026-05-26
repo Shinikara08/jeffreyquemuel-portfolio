@@ -14,7 +14,16 @@ interface Post {
 
 const POSTS: Post[] = [
   {
-    slug: "qorex-five-persona-ai-team",
+    slug: "tasq-tab-notes-from-production",
+    date: "May 26, 2026",
+    readTime: "7 min read",
+    title: "TasQ Tab - Task Manager Desktop App",
+    excerpt:
+      "What I learned building a personal desktop widget that syncs realtime with ClickUp. Three rounds for a complete sync. Eleven rounds for a small UI element. The straight line is fiction.",
+    tags: ["electron", "clickup", "desktop", "production-notes"],
+  },
+  {
+    slug: "how-i-built-a-five-persona-ai-team",
     date: "May 20, 2026",
     readTime: "10 min read",
     title: "How I Built a Five-Persona AI Team That Ships Production Work",

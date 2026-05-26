@@ -109,7 +109,8 @@ export default function Contact() {
                 <option value="n8n Workflow">n8n Workflow Automation</option>
                 <option value="Data Pipeline">Data Pipeline / BigQuery</option>
                 <option value="Prompt Engineering">Prompt Engineering / AI Agent</option>
-                <option value="Prompt Engineering">Email Automation</option>
+                <option value="Email Automation">Email Automation</option>
+                <option value="Software Development">Software Development</option>
                 <option value="Other">Other</option>
               </select>
               <textarea

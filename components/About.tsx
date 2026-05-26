@@ -2,18 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import CountUpTile from "@/components/CountUpTile";
+import RotatingTitle from "@/components/RotatingTitle";
 
 const BIO_PARAGRAPHS = [
-  "I'm an AI Automation Engineer specializing in production-grade workflow systems for multi-market e-commerce. My stack: n8n (self-hosted and cloud), Claude Code, JavaScript, Python, and Docker. I design data pipelines, build REST API integrations, architect fault-tolerant retry systems, and ship AI-powered query layers that replace SQL for non-technical teams.",
-  "My edge is the hard part — reverse-engineering undocumented APIs with Chrome DevTools, writing HMAC/SHA256 request signers by hand, implementing OAuth2 refresh flows, and designing polling state machines with idempotent execution, cross-iteration state persistence, and exponential backoff retries. I've built production integrations for Shopee Open API, Lazada Open API, BigQuery, Google Sheets, and Claude AI.",
-  "Proven at scale: 3.4M+ marketplace orders synced, 15,946 active SKUs tracked daily, and automation pipelines running hands-off across three Southeast Asian markets. I deliver end-to-end — scoping, architecture, custom JavaScript Code nodes, Docker-hosted n8n deployments, and the client handoff documentation that keeps everything running long after I'm off the project.",
-];
-
-const STATS = [
-  { value: "3.4M+", label: "Orders Synced" },
-  { value: "15,946", label: "Active SKUs" },
-  { value: "3", label: "Markets (SG·MY·TH)" },
-  { value: "2+", label: "Years in Production" },
+  "I'm an AI Systems Engineer based in the Philippines. I split my work across three lanes. The first is e-commerce automation across Shopee, Lazada, and TikTok Shop, where I sync millions of orders and track thousands of SKUs every day without anyone needing to babysit it. The second is full-stack apps and CRM tooling, including a live multi-tenant SaaS at AutomaQue CRM and HubSpot enrichment pipelines for music PR clients. The third is AI-system design, where I build named, structured agent teams instead of writing one-off prompts.",
+  "What I actually like is the hard part most engineers skip. Reverse-engineering undocumented APIs by reading the network traffic. Writing the request-signing and OAuth refresh logic by hand when there is no SDK. Building retry systems that survive when a vendor API goes down and pick up exactly where they left off. Wrapping command-line tools in small web services when my workflow tool cannot reach them on its own. Designing AI agents that hold their character across long sessions because the memory and prompts are architected, not improvised.",
+  "My team is QoreX. Five Claude-based agents I built and work with daily. Storm brainstorms with me. Rune writes the technical specs. Forge ships the code. Echo keeps the memory honest. Hiru drafts every word I send out. I ran the whole team today to ship the page you're on. The AI Agents tab has the longer story.",
 ];
 
 export default function About() {
@@ -58,7 +53,7 @@ export default function About() {
               transition={{ delay: 0.3 }}
               className="text-xl md:text-2xl text-primary mb-8"
             >
-              AI Automation Engineer · Remote from the Philippines
+              <RotatingTitle /> · Remote from the Philippines
             </motion.p>
 
             <div className="space-y-4">
@@ -102,21 +97,44 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="space-y-4"
         >
-          {STATS.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-6"
-            >
-              <div className="text-3xl md:text-4xl font-bold text-primary">
-                {stat.value}
-              </div>
-              <div className="text-xs uppercase tracking-widest text-muted mt-2">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <CountUpTile
+              target={3400000}
+              suffix="+"
+              format="compact"
+              label="Orders Synced"
+            />
+            <CountUpTile target={15946} format="comma" label="Active SKUs" />
+            <CountUpTile
+              target={3}
+              noCount
+              label="Markets (SG · MY · TH)"
+            />
+            <CountUpTile
+              target={3}
+              suffix="+"
+              label="Years in Production"
+            />
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:max-w-3xl md:mx-auto">
+            <CountUpTile
+              target={100}
+              suffix="+"
+              label="Workflows in Production"
+            />
+            <CountUpTile
+              target={10000}
+              suffix="+"
+              format="comma"
+              label="HubSpot Enrichments"
+            />
+            <CountUpTile target={5} label="AI Agents (QoreX)" />
+          </div>
+          <p className="text-xs text-muted mt-6 text-center md:text-left">
+            Last updated: May 2026
+          </p>
         </motion.div>
       </div>
     </section>

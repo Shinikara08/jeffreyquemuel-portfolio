@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import ScrollingMarquee from "./ScrollingMarquee";
+import HeroTitleRoller from "./HeroTitleRoller";
 
 export default function Hero() {
   return (
@@ -38,9 +39,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-4 text-4xl text-primary md:text-5xl uppercase tracking-wide"
+          className="mt-4 w-full max-w-[980px] font-normal uppercase tracking-wide"
         >
-          AI AUTOMATION ENGINEER
+          <HeroTitleRoller />
         </motion.p>
 
         <motion.p

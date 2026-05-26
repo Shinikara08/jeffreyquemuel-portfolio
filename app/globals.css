@@ -29,6 +29,7 @@ html, body {
   color: #F9FAFB;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
   font-family: Arial, sans-serif;
 }
 

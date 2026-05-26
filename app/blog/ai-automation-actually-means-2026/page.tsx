@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
@@ -46,6 +47,12 @@ export default function Post() {
         and get a real answer in seconds.
       </p>
 
+      <BlogImage
+        src="/images/projects/dashboard_ecommerce.png"
+        alt="Sales dashboard showing marketplace order, SKU, and zero-sales metrics"
+        caption="Automation means the dashboard is live before anyone asks for it"
+      />
+
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         AI is the smallest part.
       </h2>
@@ -57,6 +64,18 @@ export default function Post() {
         where systems exchange data.
       </p>
 
+      <BlogImage
+        src="/images/projects/automaque_crm_ai_campaign2.png"
+        alt="AutomaQue CRM campaign editor with Draft with AI controls and audience segment filters"
+        caption="AI belongs at the human-facing layer: drafting, querying, deciding"
+      />
+
+      <BlogImage
+        src="/images/projects/automaque_crm_ai_campaign3.png"
+        alt="Generated email campaign content with personalized first name and company placeholders"
+        caption="The AI output still lands in a normal reviewable workflow"
+      />
+
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         The hard part is the boring part.
       </h2>
@@ -66,6 +85,13 @@ export default function Post() {
         survives a rerun. Idempotency keys. State persistence across
         iterations. None of this is AI. All of it is what makes AI useful.
       </p>
+
+      <BlogImage
+        src="/images/projects/automaque_crm_ai_campaign1.png"
+        alt="Draft with AI modal asking for campaign goal, audience, and tone"
+        caption="The visible magic is small because the system underneath is doing the work"
+        aspect="square"
+      />
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         If your automation breaks at 3 AM, it isn&rsquo;t automation.

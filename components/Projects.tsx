@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ZoomableImage from "@/components/ZoomableImage";
 
 interface Project {
   title: string;
@@ -10,6 +11,20 @@ interface Project {
   solution: string;
   stack: string;
   result: string;
+  screenshots?: ProjectScreenshot[];
+  links?: ProjectLink[];
+}
+
+interface ProjectScreenshot {
+  src: string;
+  alt: string;
+  caption: string;
+  aspect?: "wide" | "square" | "tall";
+}
+
+interface ProjectLink {
+  label: string;
+  href: string;
 }
 
 const PROJECTS: Project[] = [
@@ -33,6 +48,34 @@ const PROJECTS: Project[] = [
       "Next.js 14 (App Router) · TypeScript · Tailwind · shadcn-style components · BigQuery (9-table schema, soft-delete) · googleapis (Gmail + Calendar OAuth) · Anthropic SDK (Haiku 4.5 for fast paths, Sonnet 4.5 for chatbot reasoning) · NextAuth (Google OAuth + email allowlist) · Vercel Blob · Tiptap · TanStack Query/Table · @dnd-kit · n8n (Docker) · Recharts",
     result:
       "Phase 1 (contacts, deals, pipeline, activities, notes, attachments, dashboard, search, auth) shipped in a single build push. Phase 2 layered in Gmail + AI replies, email campaigns, RAG chatbot, n8n reminders, and AI calendar extraction. Zero per-seat fees, full data ownership in BigQuery, and a public showcase of all four service offerings — automation, SaaS dev, web dev, lead gen — in one working product.",
+    screenshots: [
+      {
+        src: "/images/projects/automaque_crm_dashboard1.png",
+        alt: "AutomaQue CRM dashboard with pipeline value, won revenue, win rate, contacts, and charts",
+        caption: "CRM dashboard",
+      },
+      {
+        src: "/images/projects/automaque_crm_analysis.png",
+        alt: "AutomaQue CRM AI chat answer analyzing stale follow-ups and missing last-contact data",
+        caption: "Direct-context CRM analysis",
+      },
+      {
+        src: "/images/projects/automaque_crm_ai_campaign2.png",
+        alt: "AutomaQue CRM email campaign editor with AI draft controls and segment filters",
+        caption: "AI campaign editor",
+      },
+      {
+        src: "/images/projects/automaque_crm_ai_campaign1.png",
+        alt: "AutomaQue CRM draft with AI modal for campaign goal, audience, and tone",
+        caption: "Draft with AI modal",
+        aspect: "square",
+      },
+      {
+        src: "/images/projects/automaque_crm_ai_campaign3.png",
+        alt: "AutomaQue CRM email content form with generated subject and email body",
+        caption: "Generated email body",
+      },
+    ],
   },
   {
     title: "QolAssist — Real-Time Desktop AI Overlay",
@@ -53,6 +96,13 @@ const PROJECTS: Project[] = [
       "Python 3.11 · PyQt6 (frameless overlays + signals/slots) · Vosk (streaming ASR on CPU) · soundcard (WASAPI loopback) · Anthropic SDK (streaming + prompt caching) · keyboard (global hotkeys) · PyInstaller (one-folder Windows distribution)",
     result:
       "Sub-second caption latency on CPU. ~10x cheaper repeat asks against the same reference file via Anthropic prompt caching. Single-key listen → ask → listen workflow. Bundled as a self-contained ~190 MB Windows folder — no Python install required on the target machine.",
+    screenshots: [
+      {
+        src: "/images/projects/qolassist.png",
+        alt: "QolAssist desktop overlay with live interviewer transcript and Claude answer panel",
+        caption: "Live ASR plus Claude streaming overlay",
+      },
+    ],
   },
   {
     title: "Ask AutomaQue — AI Sales Intelligence",
@@ -72,6 +122,13 @@ const PROJECTS: Project[] = [
       "Claude AI · BigQuery · Google Sheets · n8n · Custom AI intelligence layer · JavaScript Code nodes",
     result:
       "Self-service analytics for the entire non-technical team. Zero SQL literacy required. Ad-hoc data requests to developers eliminated. Named dashboard snapshots for trend comparison over time.",
+    screenshots: [
+      {
+        src: "/images/projects/dashboard_ecommerce2.png",
+        alt: "Ask AutomaQue dark dashboard chat input for querying Shopee and Lazada sales data",
+        caption: "Ask AutomaQue query layer",
+      },
+    ],
   },
   {
     title: "Shopee × Lazada Multi-Market Order Sync",
@@ -92,6 +149,47 @@ const PROJECTS: Project[] = [
       "Shopee Open API · Lazada Open API · n8n · HMAC/SHA256 · OAuth2 · BigQuery · Google Sheets · JavaScript Code nodes",
     result:
       "3,431,798 orders · 15,946 active SKUs · 15.3M units sold, synced continuously across 3 country markets. Real-time dashboard with Hot/Active/Slow/Dead SKU labels, Lazada CVR + visitor metrics, CSV export for stakeholder reporting.",
+    screenshots: [
+      {
+        src: "/images/projects/dashboard_ecommerce.png",
+        alt: "Dark sales dashboard showing total orders, units sold, active SKUs, zero-sales SKUs, and top SKU table",
+        caption: "Multi-market sales dashboard",
+      },
+    ],
+  },
+  {
+    title: "TasQ Tab - Task Manager Desktop App",
+    tagline: "Tasks, time, and context in one working surface.",
+    tags: [
+      "Desktop App",
+      "Task Management",
+      "Time Tracking",
+      "Gmail",
+      "Calendar",
+      "Hubstaff",
+    ],
+    problem:
+      "Deep work was spread across separate tools: task lists in one place, timers in another, email and calendar context elsewhere. Switching between them made execution tracking harder than the work itself.",
+    solution:
+      "Built a compact desktop command center that keeps the active project, subtasks, timers, embedded Hubstaff, Gmail status, calendar status, and timezone glance visible in one panel. The goal is simple: keep the current work loop on screen without opening five browser tabs.",
+    stack:
+      "Desktop UI · Task/subtask tracker · Embedded time tracking · Gmail status · Calendar status · Timezone panel",
+    result:
+      "A persistent execution cockpit for project work: active subtasks, elapsed time, external work tools, and communication status stay visible while the build is running.",
+    screenshots: [
+      {
+        src: "/images/projects/tasq_tab.png",
+        alt: "TasQ Tab desktop panel showing filter timezones bar, four world clocks, a Portfolio task with five subtasks, embed notepad, Gmail and Calendar panels, and ClickUp status pill",
+        caption: "Desktop execution cockpit",
+        aspect: "tall",
+      },
+    ],
+    links: [
+      {
+        label: "Download (GitHub)",
+        href: "https://github.com/Shinikara08/tasQtab",
+      },
+    ],
   },
   {
     title: "BIGSELLER Sales Report Automation",
@@ -174,6 +272,27 @@ export default function Projects() {
                 ))}
               </div>
 
+              {project.links && project.links.length > 0 && (
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {project.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition hover:border-primary hover:bg-primary/20"
+                    >
+                      {link.label}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              {project.screenshots && project.screenshots.length > 0 && (
+                <ProjectGallery screenshots={project.screenshots} />
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <CaseStudyBlock label="The Problem" body={project.problem} />
                 <CaseStudyBlock label="The Solution" body={project.solution} />
@@ -189,6 +308,49 @@ export default function Projects() {
         </div>
       </div>
     </section>
+  );
+}
+
+function ProjectGallery({
+  screenshots,
+}: {
+  screenshots: ProjectScreenshot[];
+}) {
+  return (
+    <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+      {screenshots.map((screenshot, index) => (
+        <figure
+          key={screenshot.src}
+          className={`overflow-hidden rounded-xl border border-white/10 bg-background/50 ${
+            screenshots.length === 1 ? "md:col-span-2" : ""
+          } ${index === 0 && screenshots.length > 2 ? "md:col-span-2" : ""}`}
+        >
+          <div
+            className={`relative ${
+              screenshot.aspect === "square"
+                ? "aspect-square"
+                : screenshot.aspect === "tall"
+                ? "aspect-[9/16] max-h-[720px]"
+                : "aspect-[16/9]"
+            }`}
+          >
+            <ZoomableImage
+              src={screenshot.src}
+              alt={screenshot.alt}
+              sizes={
+                screenshots.length === 1 || index === 0
+                  ? "(max-width: 768px) 100vw, 1024px"
+                  : "(max-width: 768px) 100vw, 512px"
+              }
+              className="object-contain"
+            />
+          </div>
+          <figcaption className="border-t border-white/10 px-4 py-3 text-xs uppercase tracking-widest text-muted">
+            {screenshot.caption}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
   );
 }
 
