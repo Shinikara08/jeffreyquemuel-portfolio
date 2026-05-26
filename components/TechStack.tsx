@@ -5,6 +5,7 @@ import type { IconType } from "react-icons";
 import {
   SiN8N,
   SiJavascript,
+  SiTypescript,
   SiPython,
   SiNodedotjs,
   SiKotlin,
@@ -18,6 +19,15 @@ import {
   SiSlack,
   SiAnthropic,
   SiGit,
+  SiNextdotjs,
+  SiReact,
+  SiTailwindcss,
+  SiFramer,
+  SiElectron,
+  SiFastapi,
+  SiVercel,
+  SiGooglegemini,
+  SiClickup,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -29,20 +39,30 @@ interface Tech {
 
 const STACK: Tech[] = [
   { name: "n8n", Icon: SiN8N, color: "#EA4B71" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
   { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
   { name: "Python", Icon: SiPython, color: "#4B8BBE" },
   { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
   { name: "Java", Icon: FaJava, color: "#ED8B00" },
   { name: "Kotlin", Icon: SiKotlin, color: "#7F52FF" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
+  { name: "React", Icon: SiReact, color: "#61DAFB" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
+  { name: "Framer Motion", Icon: SiFramer, color: "#BB4B96" },
+  { name: "FastAPI", Icon: SiFastapi, color: "#009688" },
+  { name: "Electron", Icon: SiElectron, color: "#47848F" },
   { name: "Docker", Icon: SiDocker, color: "#2496ED" },
-  { name: "Airtable", Icon: SiAirtable, color: "#FCB400" },
+  { name: "Vercel", Icon: SiVercel, color: "#FFFFFF" },
   { name: "BigQuery", Icon: SiGooglebigquery, color: "#669DF6" },
   { name: "Google Sheets", Icon: SiGooglesheets, color: "#34A853" },
   { name: "Apps Script", Icon: SiGoogleappsscript, color: "#4285F4" },
   { name: "Supabase", Icon: SiSupabase, color: "#3FCF8E" },
+  { name: "Airtable", Icon: SiAirtable, color: "#FCB400" },
   { name: "HubSpot", Icon: SiHubspot, color: "#FF7A59" },
+  { name: "ClickUp", Icon: SiClickup, color: "#7B68EE" },
   { name: "Slack", Icon: SiSlack, color: "#E01E5A" },
   { name: "Claude AI", Icon: SiAnthropic, color: "#D97757" },
+  { name: "Google Gemini", Icon: SiGooglegemini, color: "#4285F4" },
   { name: "Git", Icon: SiGit, color: "#F05032" },
 ];
 
