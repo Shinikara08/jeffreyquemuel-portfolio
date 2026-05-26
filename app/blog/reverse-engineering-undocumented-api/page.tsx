@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import ScrollDeck from "@/components/ScrollDeck";
+import ZoomableImage from "@/components/ZoomableImage";
+
+const BIGSELLER_FRAMES = [1, 2, 3, 4, 5, 6] as const;
 
 export const metadata: Metadata = {
   title:
@@ -35,11 +38,26 @@ export default function Post() {
         API. You just have to find it.
       </p>
 
-      <BlogImage
-        src="/images/projects/bigseller_2.png"
-        alt="The BIGSELLER export automation in production - n8n workflow polling the platform's private API on a daily schedule, fetching the sales report .xlsx and dropping it into Google Drive without a single human click"
-        caption="The BIGSELLER n8n export workflow - the polling state machine wired end to end"
-      />
+      <ScrollDeck>
+        {BIGSELLER_FRAMES.map((n) => (
+          <figure
+            key={n}
+            className="snap-start shrink-0 w-[85vw] max-w-[640px] overflow-hidden rounded-2xl border border-white/10 bg-surface/30"
+          >
+            <div className="relative aspect-video">
+              <ZoomableImage
+                src={`/images/projects/bigseller_${n}.png`}
+                alt={`BIGSELLER export automation walkthrough, frame ${n} of ${BIGSELLER_FRAMES.length}`}
+                sizes="(max-width: 768px) 85vw, 640px"
+                className="object-contain"
+              />
+            </div>
+            <figcaption className="border-t border-white/10 px-4 py-3 text-xs uppercase tracking-widest text-muted">
+              BIGSELLER pipeline - {n} of {BIGSELLER_FRAMES.length}
+            </figcaption>
+          </figure>
+        ))}
+      </ScrollDeck>
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         Step 1: Open DevTools, Do the Task Manually
