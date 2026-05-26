@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
   title:
-    "Reverse-Engineering an Undocumented API with Chrome DevTools — Jeffrey Quemuel",
+    "Reverse-Engineering an Undocumented API with Chrome DevTools - Jeffrey Quemuel",
   description:
     "How I turned a closed marketplace platform into an open one using DevTools, cookies, and a polling state machine in n8n.",
 };
@@ -14,7 +15,7 @@ export default function Post() {
       date="December 15, 2025"
       readTime="5 min read"
       title="Reverse-Engineering an Undocumented API with Chrome DevTools"
-      subtitle="The BIGSELLER story — turning a closed platform into an open one with DevTools, cookies, and a polling state machine."
+      subtitle="The BIGSELLER story - turning a closed platform into an open one with DevTools, cookies, and a polling state machine."
       tags={["reverse-engineering", "chrome-devtools", "n8n"]}
     >
       <p>
@@ -33,6 +34,12 @@ export default function Post() {
         The unofficial answer was: the platform&rsquo;s own dashboard uses an
         API. You just have to find it.
       </p>
+
+      <BlogImage
+        src="/images/projects/bigseller_2.png"
+        alt="The BIGSELLER export automation in production - n8n workflow polling the platform's private API on a daily schedule, fetching the sales report .xlsx and dropping it into Google Drive without a single human click"
+        caption="The BIGSELLER n8n export workflow - the polling state machine wired end to end"
+      />
 
       <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-primary pt-6">
         Step 1: Open DevTools, Do the Task Manually

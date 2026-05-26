@@ -4,7 +4,7 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
   title:
-    "Direct-Context RAG: When You Don't Need a Vector Database — Jeffrey Quemuel",
+    "Direct-Context RAG: When You Don't Need a Vector Database - Jeffrey Quemuel",
   description:
     "Building the AutomaQue CRM chatbot taught me that for personal-scale data, skipping embeddings and passing the whole dataset as context is the right call. Here's the math and the implementation.",
 };
@@ -122,7 +122,7 @@ export default function Post() {
       />
 
       <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
-        <code>{`// /api/chat — pseudocode
+        <code>{`// /api/chat - pseudocode
 export async function POST(req: Request) {
   const { messages } = await req.json();
   const snapshot = await getCachedSnapshot(); // 60s server-side cache

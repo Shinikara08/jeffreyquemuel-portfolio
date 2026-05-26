@@ -4,7 +4,7 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
   title:
-    "Four Patterns I Use in Every Production n8n Workflow — Jeffrey Quemuel",
+    "Four Patterns I Use in Every Production n8n Workflow - Jeffrey Quemuel",
   description:
     "Idempotency keys, exponential backoff, state persistence, dev/prod separation. The difference between workflows that run and workflows that survive.",
 };

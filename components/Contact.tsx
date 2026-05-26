@@ -347,7 +347,7 @@ export default function Contact() {
 
             <p className="mt-4 text-xs text-muted">
               30-minute discovery call. We discuss your automation needs,
-              timeline, and next steps — no commitment.
+              timeline, and next steps - no commitment.
             </p>
           </motion.div>
         </div>

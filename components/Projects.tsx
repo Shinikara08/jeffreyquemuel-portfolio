@@ -58,7 +58,7 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "AutomaQue CRM — Self-Hosted, AI-Augmented Personal CRM",
+    title: "AutomaQue CRM - Self-Hosted, AI-Augmented Personal CRM",
     tagline: "Pipedrive replaced. Data owned. AI built in.",
     tags: [
       "Next.js",
@@ -70,13 +70,13 @@ const PROJECTS: Project[] = [
       "Vercel",
     ],
     problem:
-      "Off-the-shelf CRMs (Pipedrive, HubSpot) are bloated, charge per seat, and lock your data inside someone else's database. Spreadsheets give you ownership but nothing else — no pipeline, no AI, no email, no calendar. A solo operator running a service business needed all of Pipedrive's smart features, plus modern AI, on their own cloud, with the data sitting in BigQuery for any future analytics or RAG.",
+      "Off-the-shelf CRMs (Pipedrive, HubSpot) are bloated, charge per seat, and lock your data inside someone else's database. Spreadsheets give you ownership but nothing else - no pipeline, no AI, no email, no calendar. A solo operator running a service business needed all of Pipedrive's smart features, plus modern AI, on their own cloud, with the data sitting in BigQuery for any future analytics or RAG.",
     solution:
-      "A full-stack CRM running on Vercel with BigQuery as the data store. Drag-and-drop Kanban pipeline with optimistic UI, full Gmail integration with one-click AI-suggested replies, AI-drafted email campaigns with throttled batch send and open tracking, a RAG chatbot that answers plain-English questions over the entire CRM, and AI meeting extraction that reads an email thread and creates a Google Calendar event + linked CRM activity in one click. n8n handles cron-driven email reminders by calling the CRM's API on a schedule — the CRM stays the single source of truth, n8n owns no data.",
+      "A full-stack CRM running on Vercel with BigQuery as the data store. Drag-and-drop Kanban pipeline with optimistic UI, full Gmail integration with one-click AI-suggested replies, AI-drafted email campaigns with throttled batch send and open tracking, a RAG chatbot that answers plain-English questions over the entire CRM, and AI meeting extraction that reads an email thread and creates a Google Calendar event + linked CRM activity in one click. n8n handles cron-driven email reminders by calling the CRM's API on a schedule - the CRM stays the single source of truth, n8n owns no data.",
     stack:
       "Next.js 14 (App Router) · TypeScript · Tailwind · shadcn-style components · BigQuery (9-table schema, soft-delete) · googleapis (Gmail + Calendar OAuth) · Anthropic SDK (Haiku 4.5 for fast paths, Sonnet 4.5 for chatbot reasoning) · NextAuth (Google OAuth + email allowlist) · Vercel Blob · Tiptap · TanStack Query/Table · @dnd-kit · n8n (Docker) · Recharts",
     result:
-      "Phase 1 (contacts, deals, pipeline, activities, notes, attachments, dashboard, search, auth) shipped in a single build push. Phase 2 layered in Gmail + AI replies, email campaigns, RAG chatbot, n8n reminders, and AI calendar extraction. Zero per-seat fees, full data ownership in BigQuery, and a public showcase of all four service offerings — automation, SaaS dev, web dev, lead gen — in one working product.",
+      "Phase 1 (contacts, deals, pipeline, activities, notes, attachments, dashboard, search, auth) shipped in a single build push. Phase 2 layered in Gmail + AI replies, email campaigns, RAG chatbot, n8n reminders, and AI calendar extraction. Zero per-seat fees, full data ownership in BigQuery, and a public showcase of all four service offerings - automation, SaaS dev, web dev, lead gen - in one working product.",
     screenshots: [
       {
         src: "/images/projects/automaque_crm_dashboard1.png",
@@ -107,7 +107,7 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "QolAssist — Real-Time Desktop AI Overlay",
+    title: "QolAssist - Real-Time Desktop AI Overlay",
     tagline: "Speech in. Answers out. Both streaming.",
     tags: [
       "Python",
@@ -118,13 +118,13 @@ const PROJECTS: Project[] = [
       "PyInstaller",
     ],
     problem:
-      "Most 'AI assistant' demos send one big request and wait for one big answer — and the lag breaks the conversation. I wanted to find out what real-time AI assistance actually feels like when both speech transcription and LLM tokens stream into the UI at the same time.",
+      "Most 'AI assistant' demos send one big request and wait for one big answer - and the lag breaks the conversation. I wanted to find out what real-time AI assistance actually feels like when both speech transcription and LLM tokens stream into the UI at the same time.",
     solution:
-      "A Windows productivity overlay built around two concurrent streams. Local streaming ASR (Vosk) captions live system audio word-by-word in a frameless, always-on-top Transcript panel. Press space and the latest captions are sent to Claude — grounded in a reference text file you maintain — with tokens streaming back into a second always-on-top Answer panel. Audio capture, VAD, and transcription all run on-device; only the Claude API call leaves the machine.",
+      "A Windows productivity overlay built around two concurrent streams. Local streaming ASR (Vosk) captions live system audio word-by-word in a frameless, always-on-top Transcript panel. Press space and the latest captions are sent to Claude - grounded in a reference text file you maintain - with tokens streaming back into a second always-on-top Answer panel. Audio capture, VAD, and transcription all run on-device; only the Claude API call leaves the machine.",
     stack:
       "Python 3.11 · PyQt6 (frameless overlays + signals/slots) · Vosk (streaming ASR on CPU) · soundcard (WASAPI loopback) · Anthropic SDK (streaming + prompt caching) · keyboard (global hotkeys) · PyInstaller (one-folder Windows distribution)",
     result:
-      "Sub-second caption latency on CPU. ~10x cheaper repeat asks against the same reference file via Anthropic prompt caching. Single-key listen → ask → listen workflow. Bundled as a self-contained ~190 MB Windows folder — no Python install required on the target machine.",
+      "Sub-second caption latency on CPU. ~10x cheaper repeat asks against the same reference file via Anthropic prompt caching. Single-key listen → ask → listen workflow. Bundled as a self-contained ~190 MB Windows folder - no Python install required on the target machine.",
     screenshots: [
       {
         src: "/images/projects/qolassist.png",
@@ -134,7 +134,7 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "Ask AutomaQue — AI Sales Intelligence",
+    title: "Ask AutomaQue - AI Sales Intelligence",
     tagline: "Plain English in. Sales data out.",
     tags: [
       "Claude AI",
@@ -237,7 +237,7 @@ const PROJECTS: Project[] = [
       "Google Drive",
     ],
     problem:
-      "Client needed daily SKU sales reports for 5,461+ products — but the platform exposed no public API. Manual exports ate 45 minutes of human clicking every single day.",
+      "Client needed daily SKU sales reports for 5,461+ products - but the platform exposed no public API. Manual exports ate 45 minutes of human clicking every single day.",
     solution:
       "Reverse-engineered the internal export API via Chrome DevTools network inspection. Built an n8n polling state machine: POST trigger export → extract processKey → loop checkProcess endpoint → detect completion URL → download .xlsx → save to Google Drive.",
     stack:

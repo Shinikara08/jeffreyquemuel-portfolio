@@ -47,7 +47,7 @@ const POSTS: Post[] = [
     readTime: "6 min read",
     title: "Direct-Context RAG: When You Don't Need a Vector Database",
     excerpt:
-      "Building the AutomaQue CRM chatbot, I skipped embeddings entirely. For personal-scale data, the right answer is to pass the whole dataset as context — and the upgrade path is still wide open.",
+      "Building the AutomaQue CRM chatbot, I skipped embeddings entirely. For personal-scale data, the right answer is to pass the whole dataset as context - and the upgrade path is still wide open.",
     tags: ["rag", "claude-api", "bigquery", "architecture"],
   },
   {
@@ -83,7 +83,7 @@ const POSTS: Post[] = [
     readTime: "5 min read",
     title: "Reverse-Engineering an Undocumented API with Chrome DevTools",
     excerpt:
-      "The BIGSELLER story — how I turned a closed platform into an open one with DevTools, cookies, and a polling state machine.",
+      "The BIGSELLER story - how I turned a closed platform into an open one with DevTools, cookies, and a polling state machine.",
     tags: ["reverse-engineering", "chrome-devtools", "n8n"],
   },
   {
@@ -92,7 +92,7 @@ const POSTS: Post[] = [
     readTime: "3 min read",
     title: "What AI Automation Actually Means in 2026",
     excerpt:
-      "It's not ChatGPT wrappers. Here's what I'm actually building in production — and why the hard part is the boring part.",
+      "It's not ChatGPT wrappers. Here's what I'm actually building in production - and why the hard part is the boring part.",
     tags: ["ai-automation", "n8n", "opinion"],
   },
 ];

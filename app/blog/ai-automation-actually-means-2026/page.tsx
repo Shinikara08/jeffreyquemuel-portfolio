@@ -3,7 +3,7 @@ import BlogImage from "@/components/BlogImage";
 import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
-  title: "What AI Automation Actually Means in 2026 — Jeffrey Quemuel",
+  title: "What AI Automation Actually Means in 2026 - Jeffrey Quemuel",
   description:
     "It's not ChatGPT wrappers. Here's what I'm actually building in production.",
 };

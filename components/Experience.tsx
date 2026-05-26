@@ -53,7 +53,7 @@ const EXPERIENCES: Role[] = [
     company: "Freelance (Remote)",
     current: false,
     achievements: [
-      "Custom Android app development for clients — from concept through Play Store delivery",
+      "Custom Android app development for clients - from concept through Play Store delivery",
     ],
     tags: ["Android", "Kotlin", "Java", "Mobile Development"],
   },

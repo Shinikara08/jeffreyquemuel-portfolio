@@ -4,7 +4,7 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
   title:
-    "Writing HMAC/SHA256 Signers from Scratch for Shopee and Lazada — Jeffrey Quemuel",
+    "Writing HMAC/SHA256 Signers from Scratch for Shopee and Lazada - Jeffrey Quemuel",
   description:
     "Practical guide to writing request signers for marketplace Open APIs. What the docs leave out.",
 };

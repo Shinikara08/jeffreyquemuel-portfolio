@@ -3,12 +3,12 @@ import TopNav from "@/components/TopNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jeffrey Quemuel — AI Systems Engineer · n8n · Shopee & Lazada",
+  title: "Jeffrey Quemuel - AI Systems Engineer · n8n · Shopee & Lazada",
   description:
     "I build production-grade automation for multi-market e-commerce. 3.4M+ orders synced across Shopee, Lazada, and BigQuery with n8n and Claude AI.",
   metadataBase: new URL("https://jeffreyquemuel.cloud"),
   openGraph: {
-    title: "Jeffrey Quemuel — AI Systems Engineer",
+    title: "Jeffrey Quemuel - AI Systems Engineer",
     description:
       "No API? I build one. No workflow? I automate it. No prompt? I engineer it. 3.4M+ orders automated across SG/MY/TH.",
     url: "https://jeffreyquemuel.cloud",

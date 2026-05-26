@@ -4,7 +4,7 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
   title:
-    "How I Built a Five-Persona AI Team That Ships Production Work — Jeffrey Quemuel",
+    "How I Built a Five-Persona AI Team That Ships Production Work - Jeffrey Quemuel",
   description:
     "A working-method walk-through of QoreX: five Claude-powered agents with names, roles, handoffs, and a shared brain that ships real production work.",
 };
@@ -120,7 +120,7 @@ export default function Post() {
         id="storm"
         className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
       >
-        Storm — the cathedral spirit, brainstormer
+        Storm - the cathedral spirit, brainstormer
       </h3>
       <AgentImage {...agents.storm} />
       <p>
@@ -144,7 +144,7 @@ export default function Post() {
         id="rune"
         className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
       >
-        Rune — the silver scribe-witch, prompt master
+        Rune - the silver scribe-witch, prompt master
       </h3>
       <AgentImage {...agents.rune} />
       <p>
@@ -167,7 +167,7 @@ export default function Post() {
         id="forge"
         className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
       >
-        Forge — the cyber-mage, builder
+        Forge - the cyber-mage, builder
       </h3>
       <AgentImage {...agents.forge} />
       <p>
@@ -190,7 +190,7 @@ export default function Post() {
         id="echo"
         className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
       >
-        Echo — the haloed priestess, summarizer
+        Echo - the haloed priestess, summarizer
       </h3>
       <AgentImage {...agents.echo} />
       <p>
@@ -220,7 +220,7 @@ export default function Post() {
         id="hiru"
         className="scroll-mt-24 text-xl md:text-2xl font-bold uppercase tracking-wide pt-4"
       >
-        Hiru — the wolf, outward voice
+        Hiru - the wolf, outward voice
       </h3>
       <AgentImage {...agents.hiru} />
       <p>
@@ -484,7 +484,7 @@ Layer 4 (hybrid)              ICE: 8.3   Build Now`}</code>
         Adapt the voices. Build your own team. Send me what you make.
       </p>
       <p>
-        — Jeffrey
+        - Jeffrey
         <br />
         <a
           href="https://jeffreyquemuel.cloud"

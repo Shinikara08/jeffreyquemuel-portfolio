@@ -4,9 +4,9 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 
 export const metadata: Metadata = {
   title:
-    "Streaming Two Streams at Once: ASR Partials + LLM Tokens in One UI — Jeffrey Quemuel",
+    "Streaming Two Streams at Once: ASR Partials + LLM Tokens in One UI - Jeffrey Quemuel",
   description:
-    "Building QolAssist — a Windows desktop AI overlay where local streaming speech-to-text and streaming Claude tokens share a single event loop without blocking each other.",
+    "Building QolAssist - a Windows desktop AI overlay where local streaming speech-to-text and streaming Claude tokens share a single event loop without blocking each other.",
 };
 
 export default function Post() {
@@ -15,7 +15,7 @@ export default function Post() {
       date="May 06, 2026"
       readTime="6 min read"
       title="Streaming Two Streams at Once: ASR Partials + LLM Tokens in One UI"
-      subtitle="Building QolAssist — what 'live' actually means when speech transcription and Claude tokens both have to share an event loop."
+      subtitle="Building QolAssist - what 'live' actually means when speech transcription and Claude tokens both have to share an event loop."
       tags={["pyqt6", "claude-api", "streaming", "asr"]}
     >
       <p>
@@ -150,12 +150,12 @@ worker.final_result.connect(transcript_panel.append_final)`}</code>
       </p>
 
       <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
-        <code>{`# WRONG — runs in the audio thread, joins itself, deadlocks
+        <code>{`# WRONG - runs in the audio thread, joins itself, deadlocks
 def on_audio_error(err):
     log.error(err)
     self.stop_listening()  # joins the calling thread
 
-# RIGHT — emit, let the main thread handle teardown
+# RIGHT - emit, let the main thread handle teardown
 class AudioMixer(QObject):
     error_occurred = pyqtSignal(str)
 
