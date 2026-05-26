@@ -42,6 +42,7 @@ export default function ScrollDeck({
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const dragState = useRef({
+    pointerDown: false,
     isDragging: false,
     pointerId: -1,
     startX: 0,
@@ -116,36 +117,44 @@ export default function ScrollDeck({
     const el = scrollerRef.current;
     if (!el) return;
 
-    try {
-      el.setPointerCapture(e.pointerId);
-    } catch {
-      // Some browsers throw if capture is denied; treat as a non-drag click.
-      return;
-    }
-    dragState.current.isDragging = true;
+    dragState.current.pointerDown = true;
+    dragState.current.isDragging = false;
     dragState.current.pointerId = e.pointerId;
     dragState.current.startX = e.clientX;
     dragState.current.startScrollLeft = el.scrollLeft;
     dragState.current.moved = false;
-    el.classList.add("cursor-grabbing");
   }
 
   function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (!dragState.current.isDragging) return;
+    if (!dragState.current.pointerDown) return;
     if (e.pointerId !== dragState.current.pointerId) return;
     const el = scrollerRef.current;
     if (!el) return;
+
     const dx = e.clientX - dragState.current.startX;
-    if (Math.abs(dx) > 8) dragState.current.moved = true;
+
+    if (!dragState.current.isDragging) {
+      if (Math.abs(dx) <= 8) return;
+      dragState.current.isDragging = true;
+      dragState.current.moved = true;
+      try {
+        el.setPointerCapture(e.pointerId);
+      } catch {
+        // Capture denied - drag still works while pointer stays over the
+        // scroller. Rare-browser fallback.
+      }
+      el.classList.add("cursor-grabbing");
+    }
+
     el.scrollLeft = dragState.current.startScrollLeft - dx;
   }
 
   function endDrag(e?: React.PointerEvent<HTMLDivElement>) {
-    if (!dragState.current.isDragging) return;
+    const wasDragging = dragState.current.isDragging;
     const el = scrollerRef.current;
     if (el) {
       el.classList.remove("cursor-grabbing");
-      if (e && el.hasPointerCapture(e.pointerId)) {
+      if (wasDragging && e && el.hasPointerCapture(e.pointerId)) {
         try {
           el.releasePointerCapture(e.pointerId);
         } catch {
@@ -153,6 +162,7 @@ export default function ScrollDeck({
         }
       }
     }
+    dragState.current.pointerDown = false;
     dragState.current.isDragging = false;
     dragState.current.pointerId = -1;
   }
