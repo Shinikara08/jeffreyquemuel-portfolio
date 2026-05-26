@@ -38,7 +38,7 @@ const EXPERIENCES: Role[] = [
   },
   {
     role: "Freelance AI Automation Specialist",
-    company: "Self-employed (Remote)",
+    company: "Freelance (Remote)",
     current: false,
     achievements: [
       "Delivered custom n8n workflows for e-commerce clients: order mgmt, inventory sync, CS triggers, multi-platform aggregation",

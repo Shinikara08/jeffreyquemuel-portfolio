@@ -21,9 +21,11 @@ export default function HiruScrollCompanion() {
   const reduceMotion = useReducedMotion();
   const activeSection = sections[activeIndex];
   const isHome = activeSection.id === "home";
-  const isRightSide = activeIndex % 2 === 1;
-  const gridX = isRightSide ? "calc(87.5vw - 3rem)" : "calc(12.5vw - 3rem)";
-  const gridY = isRightSide ? "calc(62.5vh - 3rem)" : "calc(37.5vh - 3rem)";
+  // Hiru is locked to the LEFT side. Vertical position still alternates
+  // between upper and lower tiles so the user perceives motion as they scroll.
+  const isLowerHalf = activeIndex % 2 === 1;
+  const gridX = "calc(12.5vw - 3rem)";
+  const gridY = isLowerHalf ? "calc(62.5vh - 3rem)" : "calc(37.5vh - 3rem)";
 
   useEffect(() => {
     let frame = 0;
@@ -88,7 +90,7 @@ export default function HiruScrollCompanion() {
       <div className="relative h-screen w-screen">
         <motion.div
           aria-label="Hiru, floating homepage guide"
-          className="pointer-events-auto absolute left-0 top-0 block h-24 w-24 origin-top-left scale-50 rounded-full"
+          className="pointer-events-auto absolute left-0 top-0 block h-24 w-24 origin-top-left scale-75 rounded-full"
           initial={false}
           animate={
             reduceMotion
@@ -96,7 +98,7 @@ export default function HiruScrollCompanion() {
               : {
                   x: gridX,
                   y: gridY,
-                  rotate: isRightSide ? 3 : -3,
+                  rotate: -3,
                   scale: activeIndex === 0 ? 1.04 : 0.98,
                 }
           }
@@ -266,9 +268,7 @@ export default function HiruScrollCompanion() {
               sizes="96px"
               quality={100}
               unoptimized
-              className={`object-cover transition-transform duration-500 ${
-                isRightSide ? "-scale-x-100" : "scale-x-100"
-              }`}
+              className="object-cover transition-transform duration-500 scale-x-100"
             />
             <span className="absolute inset-0 bg-[radial-gradient(circle_at_35%_25%,rgba(103,232,249,0.18),transparent_45%)]" />
           </motion.span>
