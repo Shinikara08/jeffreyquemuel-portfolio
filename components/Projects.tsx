@@ -30,6 +30,34 @@ interface ProjectLink {
 
 const PROJECTS: Project[] = [
   {
+    title: "Liberty Music PR - HubSpot Label Enrichment",
+    tagline: "Stop manually researching artist labels. Let the workflow do it.",
+    tags: [
+      "n8n",
+      "HubSpot API",
+      "Claude AI",
+      "SerpAPI",
+      "Google Sheets",
+      "AI Enrichment",
+    ],
+    problem:
+      "Liberty Music PR manages hundreds of artist contacts in HubSpot. The Company Name field, which is supposed to hold each artist's music label, was empty or wrong across the database. Researching every artist one by one was burning hours and the field still drifted as the roster changed.",
+    solution:
+      "Built an n8n workflow that walks the HubSpot list, batch-reads contacts via the Private App API, and loops over each one through a deep web search (SerpAPI Google AI mode) plus a Claude agent (Sonnet primary, Haiku fallback) that extracts the music label from the search results. Anti-contamination check rejects ambiguous matches and writes 'None' instead. Each enrichment is cost-tracked to a Google Sheet. Wait nodes throttle the run so SerpAPI and Anthropic rate limits stay happy.",
+    stack:
+      "n8n (self-hosted) - HubSpot Private App (contacts.read + contacts.write) - SerpAPI Google AI mode - Anthropic Claude Sonnet + Haiku - Structured Output Parser - Google Sheets cost log - 12s per-contact wait, 3min loop pacing",
+    result:
+      "Architecture v2 wired in n8n with all nodes built and connected. Per-contact cost logged for forecasting. Prompt-engineering and full-catalog rollout in progress for Liberty Music PR.",
+    screenshots: [
+      {
+        src: "/images/projects/liberty_hubspot_enrichment.png",
+        alt: "n8n workflow canvas showing Liberty Music PR HubSpot label-enrichment pipeline: Run Enrichment trigger, Get List Memberships, Aggregate Member IDs, Batch Read Contacts, Prepare Contacts, Loop Over Contacts, Google AI mode search via SerpAPI, AI Agent with Anthropic Sonnet primary and Haiku fallback, Structured Output Parser, Update Contact HTTP PATCH, Wait 12 Seconds, Calculate Run Cost, Append or update row in sheet, plus extra teleprompter prep nodes for upcoming task",
+        caption: "n8n workflow canvas - HubSpot label enrichment",
+        aspect: "wide",
+      },
+    ],
+  },
+  {
     title: "AutomaQue CRM — Self-Hosted, AI-Augmented Personal CRM",
     tagline: "Pipedrive replaced. Data owned. AI built in.",
     tags: [
@@ -303,11 +331,32 @@ export default function Projects() {
                 </figure>
               )}
 
+              <div className="space-y-3 mb-4 text-xs leading-relaxed">
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-primary mb-1">
+                    The Problem
+                  </p>
+                  <p className="text-muted">{project.problem}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-primary mb-1">
+                    The Solution
+                  </p>
+                  <p className="text-muted">{project.solution}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-primary mb-1">
+                    The Stack
+                  </p>
+                  <p className="text-muted">{project.stack}</p>
+                </div>
+              </div>
+
               <div className="mt-auto rounded-xl border border-primary/30 bg-primary/5 px-4 py-3">
                 <p className="text-[10px] uppercase tracking-widest text-primary mb-1.5">
                   The Result
                 </p>
-                <p className="text-xs leading-relaxed text-muted">
+                <p className="text-xs leading-relaxed text-foreground">
                   {project.result}
                 </p>
               </div>

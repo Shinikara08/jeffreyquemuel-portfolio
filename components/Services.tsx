@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ScrollDeck from "@/components/ScrollDeck";
 import { Database, Layers, Monitor, Network, Plug, Sparkles, Users } from "lucide-react";
 
 const TOP_ROW_SERVICES = [
@@ -74,11 +75,11 @@ export default function Services() {
           Services
         </motion.h2>
 
-        <div className="-mx-6 md:-mx-12 px-6 md:px-12 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6 scroll-smooth [scrollbar-width:thin]">
+        <ScrollDeck>
           {[...TOP_ROW_SERVICES, ...BOTTOM_ROW_SERVICES].map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
-        </div>
+        </ScrollDeck>
       </div>
     </section>
   );
