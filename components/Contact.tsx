@@ -2,8 +2,46 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, Calendar } from "lucide-react";
+import {
+  Mail,
+  Calendar,
+  Phone,
+  FileText,
+  Hammer,
+  Rocket,
+  Repeat,
+  ChevronRight,
+} from "lucide-react";
 import { FaLinkedin, FaFacebook } from "react-icons/fa";
+import Link from "next/link";
+
+const ROADMAP_STEPS = [
+  {
+    icon: Phone,
+    label: "Discovery Call",
+    blurb: "30-minute scope chat. We pinpoint the bleeding workflow.",
+  },
+  {
+    icon: FileText,
+    label: "Brainstorm + Spec",
+    blurb: "I map angles, score paths, then carve a tight build spec.",
+  },
+  {
+    icon: Hammer,
+    label: "Build",
+    blurb: "Vertical slices, real tests, honest logs every step.",
+  },
+  {
+    icon: Rocket,
+    label: "Deploy",
+    blurb: "Ship to production with monitoring and a rollback plan.",
+  },
+  {
+    icon: Repeat,
+    label: "Maintain",
+    blurb: "Tune, extend, and keep the workflow healthy as scale grows.",
+  },
+];
 
 /**
  * ⚙️  TO ACTIVATE THE CALENDAR BOOKING WIDGET:
@@ -50,6 +88,103 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           className="mb-3 text-xs uppercase tracking-widest text-muted"
+        >
+          How We Work Together
+        </motion.div>
+
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.1 }}
+          className="text-2xl md:text-4xl font-bold uppercase tracking-wide mb-3"
+        >
+          From Discovery Call to Live Production
+        </motion.h3>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.2 }}
+          className="text-base text-muted mb-10 max-w-2xl"
+        >
+          The five stops every project moves through. No surprises, no
+          consultant theater.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.3 }}
+          className="mb-6"
+        >
+          <div className="hidden md:flex items-stretch gap-2">
+            {ROADMAP_STEPS.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <div key={step.label} className="flex items-center flex-1">
+                  <div className="flex-1 rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-5 h-full">
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 border border-primary/30">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="text-sm font-bold uppercase tracking-wide text-foreground mb-2">
+                      {step.label}
+                    </div>
+                    <p className="text-xs text-muted leading-relaxed">
+                      {step.blurb}
+                    </p>
+                  </div>
+                  {i < ROADMAP_STEPS.length - 1 && (
+                    <ChevronRight className="h-5 w-5 text-primary/60 shrink-0 mx-1" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="md:hidden space-y-3">
+            {ROADMAP_STEPS.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div
+                  key={step.label}
+                  className="rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-5 flex gap-4"
+                >
+                  <div className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 border border-primary/30">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold uppercase tracking-wide text-foreground mb-1">
+                      {step.label}
+                    </div>
+                    <p className="text-xs text-muted leading-relaxed">
+                      {step.blurb}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="mt-6 text-xs text-muted">
+            Powered by QoreX.{" "}
+            <Link
+              href="/qorex"
+              className="text-primary/80 hover:text-primary underline-offset-4 hover:underline transition"
+            >
+              Meet the team →
+            </Link>
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.4 }}
+          className="mb-3 mt-20 text-xs uppercase tracking-widest text-muted"
         >
           Contact
         </motion.div>

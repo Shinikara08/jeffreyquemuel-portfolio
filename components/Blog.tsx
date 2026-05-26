@@ -15,6 +15,15 @@ interface Post {
 
 const POSTS: Post[] = [
   {
+    slug: "hubspot-label-enrichment-with-n8n",
+    date: "May 27, 2026",
+    readTime: "7 min read",
+    title: "HubSpot Label Enrichment with n8n, SerpAPI, and Claude",
+    excerpt:
+      "Building a self-running HubSpot enrichment with n8n, SerpAPI, and Claude. How I wired deep web search and an AI agent to auto-populate music labels into hundreds of artist contacts.",
+    tags: ["n8n", "hubspot", "claude", "ai-enrichment"],
+  },
+  {
     slug: "tasq-tab-notes-from-production",
     date: "May 26, 2026",
     readTime: "7 min read",

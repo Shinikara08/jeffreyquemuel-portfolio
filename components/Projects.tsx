@@ -50,9 +50,9 @@ const PROJECTS: Project[] = [
       "Architecture v2 wired in n8n with all nodes built and connected. Per-contact cost logged for forecasting. Prompt-engineering and full-catalog rollout in progress for Liberty Music PR.",
     screenshots: [
       {
-        src: "/images/projects/liberty_hubspot_enrichment.png",
-        alt: "n8n workflow canvas showing Liberty Music PR HubSpot label-enrichment pipeline: Run Enrichment trigger, Get List Memberships, Aggregate Member IDs, Batch Read Contacts, Prepare Contacts, Loop Over Contacts, Google AI mode search via SerpAPI, AI Agent with Anthropic Sonnet primary and Haiku fallback, Structured Output Parser, Update Contact HTTP PATCH, Wait 12 Seconds, Calculate Run Cost, Append or update row in sheet, plus extra teleprompter prep nodes for upcoming task",
-        caption: "n8n workflow canvas - HubSpot label enrichment",
+        src: "/images/projects/liberty_1.png",
+        alt: "Liberty Music PR HubSpot label enrichment workflow - n8n canvas showing the contact enrichment pipeline",
+        caption: "Liberty Music PR enrichment workflow",
         aspect: "wide",
       },
     ],
@@ -212,6 +212,12 @@ const PROJECTS: Project[] = [
         caption: "Desktop execution cockpit",
         aspect: "tall",
       },
+      {
+        src: "/images/projects/tasqtab_2.png",
+        alt: "TasQ Tab widget showing the current build with additional context",
+        caption: "Current build view",
+        aspect: "tall",
+      },
     ],
     links: [
       {
@@ -319,16 +325,23 @@ export default function Projects() {
               )}
 
               {project.screenshots && project.screenshots.length > 0 && (
-                <figure className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-background/50">
-                  <div className="relative aspect-[4/3]">
-                    <ZoomableImage
-                      src={project.screenshots[0].src}
-                      alt={project.screenshots[0].alt}
-                      sizes="(max-width: 768px) 85vw, 400px"
-                      className="object-contain"
-                    />
-                  </div>
-                </figure>
+                <div className={`mb-4 grid gap-2 ${project.screenshots.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
+                  {project.screenshots.slice(0, 2).map((shot) => (
+                    <figure
+                      key={shot.src}
+                      className="overflow-hidden rounded-xl border border-white/10 bg-background/50"
+                    >
+                      <div className="relative aspect-[4/3]">
+                        <ZoomableImage
+                          src={shot.src}
+                          alt={shot.alt}
+                          sizes="(max-width: 768px) 42vw, 200px"
+                          className="object-contain"
+                        />
+                      </div>
+                    </figure>
+                  ))}
+                </div>
               )}
 
               <div className="space-y-3 mb-4 text-xs leading-relaxed">

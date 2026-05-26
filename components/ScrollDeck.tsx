@@ -118,7 +118,7 @@ export default function ScrollDeck({
         ref={scrollerRef}
         onMouseDown={onMouseDown}
         onClickCapture={onClickCapture}
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-6 scroll-smooth cursor-grab select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 md:px-14 pb-6 scroll-smooth cursor-grab select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {children}
       </div>
@@ -128,7 +128,7 @@ export default function ScrollDeck({
           type="button"
           aria-label="Scroll left"
           onClick={() => scrollByStep(-1)}
-          className="absolute left-1 md:left-3 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-background/85 text-foreground backdrop-blur-md transition hover:bg-primary/20 hover:border-primary hover:text-primary"
+          className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-background/85 text-foreground backdrop-blur-md transition hover:bg-primary/20 hover:border-primary hover:text-primary"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
@@ -139,7 +139,7 @@ export default function ScrollDeck({
           type="button"
           aria-label="Scroll right"
           onClick={() => scrollByStep(1)}
-          className="absolute right-1 md:right-3 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-background/85 text-foreground backdrop-blur-md transition hover:bg-primary/20 hover:border-primary hover:text-primary"
+          className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-background/85 text-foreground backdrop-blur-md transition hover:bg-primary/20 hover:border-primary hover:text-primary"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
