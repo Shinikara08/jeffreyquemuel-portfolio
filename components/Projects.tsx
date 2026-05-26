@@ -179,8 +179,14 @@ const PROJECTS: Project[] = [
     screenshots: [
       {
         src: "/images/projects/tasq_tab.png",
-        alt: "TasQ Tab desktop panel showing filter timezones bar, four world clocks, a Portfolio task with five subtasks, embed notepad, Gmail and Calendar panels, and ClickUp status pill",
-        caption: "Desktop execution cockpit",
+        alt: "TasQ Tab early version - task panel with subtasks, embedded Hubstaff timer, Gmail status, and Calendar widgets",
+        caption: "Original layout (May 2026)",
+        aspect: "tall",
+      },
+      {
+        src: "/images/projects/tasq_tab_v1.39.png",
+        alt: "TasQ Tab v1.39.0 showing filter timezones bar, four world clocks (Manila, London, Sydney, Helsinki), a Portfolio task with five subtasks, notepad, Gmail and Calendar panels, and live ClickUp sync status",
+        caption: "Current build - v1.39.0 with realtime ClickUp sync",
         aspect: "tall",
       },
     ],
