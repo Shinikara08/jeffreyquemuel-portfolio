@@ -239,10 +239,10 @@ export default function QoreXPage() {
                 <h2 className="text-5xl font-bold uppercase tracking-wide md:text-7xl">
                   {agent.name}
                 </h2>
-                <p className="mt-4 text-xl italic text-muted opacity-80">
+                <p className="mt-4 inline-block rounded-xl border border-white/10 bg-background/70 px-5 py-3 text-xl italic text-muted backdrop-blur-sm">
                   {agent.quote}
                 </p>
-                <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted md:text-lg">
+                <p className="mt-6 max-w-3xl rounded-xl border border-white/10 bg-background/70 px-5 py-4 text-base leading-relaxed text-muted backdrop-blur-sm md:text-lg">
                   {agent.bio}
                 </p>
 
