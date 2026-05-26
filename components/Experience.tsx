@@ -12,9 +12,18 @@ interface Role {
 
 const EXPERIENCES: Role[] = [
   {
+    role: "Software Developer | AI Automation Engineer | Data Expert",
+    company: "Liberty Music PR · (Remote)",
+    current: true,
+    achievements: [
+      "Recently started — deliverables in progress",
+    ],
+    tags: ["Software Development", "AI Automation", "Data Engineering"],
+  },
+  {
     role: "AI Systems Engineer",
     company: "Boughtnex LTD · Singapore (Remote)",
-    current: true,
+    current: false,
     achievements: [
       "Reverse-engineered undocumented export API; eliminated manual reporting for 5,461+ SKUs",
       "Architected multi-market Historical Sales Dashboard (3.4M+ orders, 15,946 SKUs across SG/MY/TH)",

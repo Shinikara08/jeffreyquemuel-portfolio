@@ -185,8 +185,8 @@ const PROJECTS: Project[] = [
       },
       {
         src: "/images/projects/tasq_tab_v1.39.png",
-        alt: "TasQ Tab v1.39.0 showing filter timezones bar, four world clocks (Manila, London, Sydney, Helsinki), a Portfolio task with five subtasks, notepad, Gmail and Calendar panels, and live ClickUp sync status",
-        caption: "Current build - v1.39.0 with realtime ClickUp sync",
+        alt: "TasQ Tab current build with QoreX header, lock and minimize controls, filter timezones bar, four world clocks (Manila, London, Sydney, Helsinki), Portfolio task with five subtasks, notepad with a test note, Gmail and Calendar panels, and live ClickUp sync status",
+        caption: "Current build - realtime ClickUp sync, notepad, world clocks",
         aspect: "tall",
       },
     ],
