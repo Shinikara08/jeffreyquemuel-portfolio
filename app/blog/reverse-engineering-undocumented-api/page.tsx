@@ -3,7 +3,7 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 import ScrollDeck from "@/components/ScrollDeck";
 import ZoomableImage from "@/components/ZoomableImage";
 
-const BIGSELLER_FRAMES = [1, 2, 3, 4, 5, 6] as const;
+const BIGSELLER_FRAMES = [2, 3, 4, 5, 6] as const;
 
 export const metadata: Metadata = {
   title:
@@ -39,7 +39,7 @@ export default function Post() {
       </p>
 
       <ScrollDeck>
-        {BIGSELLER_FRAMES.map((n) => (
+        {BIGSELLER_FRAMES.map((n, i) => (
           <figure
             key={n}
             className="snap-start shrink-0 w-[85vw] max-w-[640px] overflow-hidden rounded-2xl border border-white/10 bg-surface/30"
@@ -47,13 +47,21 @@ export default function Post() {
             <div className="relative aspect-video">
               <ZoomableImage
                 src={`/images/projects/bigseller_${n}.png`}
-                alt={`BIGSELLER export automation walkthrough, frame ${n} of ${BIGSELLER_FRAMES.length}`}
+                alt={`BIGSELLER export automation walkthrough, frame ${
+                  i + 1
+                } of ${BIGSELLER_FRAMES.length}`}
                 sizes="(max-width: 768px) 85vw, 640px"
                 className="object-contain"
+                gallery={BIGSELLER_FRAMES.map((m, j) => ({
+                  src: `/images/projects/bigseller_${m}.png`,
+                  alt: `BIGSELLER export automation walkthrough, frame ${
+                    j + 1
+                  } of ${BIGSELLER_FRAMES.length}`,
+                }))}
               />
             </div>
             <figcaption className="border-t border-white/10 px-4 py-3 text-xs uppercase tracking-widest text-muted">
-              BIGSELLER pipeline - {n} of {BIGSELLER_FRAMES.length}
+              BIGSELLER pipeline - {i + 1} of {BIGSELLER_FRAMES.length}
             </figcaption>
           </figure>
         ))}
