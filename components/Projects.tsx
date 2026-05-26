@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import ZoomableImage from "@/components/ZoomableImage";
+import ScrollDeck from "@/components/ScrollDeck";
 
 interface Project {
   title: string;
@@ -245,7 +246,7 @@ export default function Projects() {
           Three automations, running in production today.
         </motion.p>
 
-        <div className="-mx-6 md:-mx-12 px-6 md:px-12 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scroll-smooth [scrollbar-width:thin]">
+        <ScrollDeck>
           {PROJECTS.map((project, i) => (
             <motion.article
               key={project.title}
@@ -312,7 +313,7 @@ export default function Projects() {
               </div>
             </motion.article>
           ))}
-        </div>
+        </ScrollDeck>
       </div>
     </section>
   );

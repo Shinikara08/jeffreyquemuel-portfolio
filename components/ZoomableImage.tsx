@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function ZoomableImage({
   src,
@@ -18,6 +19,12 @@ export default function ZoomableImage({
   onOpen?: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Portal target needs document.body which only exists on the client.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -34,6 +41,46 @@ export default function ZoomableImage({
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
+
+  // The modal is portalled to document.body so any transformed ancestor
+  // (e.g. Framer Motion translate on a card) doesn't trap "position: fixed"
+  // inside the tile. From document.body, fixed truly anchors to the viewport.
+  const modal = open ? (
+    <div
+      role="dialog"
+      aria-modal="true"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+      onClick={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        aria-label="Close zoomed image"
+        className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white transition hover:bg-white/10"
+        onClick={(event) => {
+          event.stopPropagation();
+          setOpen(false);
+        }}
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      <div
+        className="relative h-[88vh] w-[94vw]"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="94vw"
+          quality={100}
+          unoptimized
+          className="object-contain"
+          priority
+        />
+      </div>
+    </div>
+  ) : null;
 
   return (
     <>
@@ -57,39 +104,7 @@ export default function ZoomableImage({
         />
       </button>
 
-      {open && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
-          onClick={() => setOpen(false)}
-        >
-          <button
-            type="button"
-            aria-label="Close zoomed image"
-            className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white transition hover:bg-white/10"
-            onClick={() => setOpen(false)}
-          >
-            <X className="h-5 w-5" />
-          </button>
-
-          <div
-            className="relative h-[88vh] w-[94vw]"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              sizes="94vw"
-              quality={100}
-              unoptimized
-              className="object-contain"
-              priority
-            />
-          </div>
-        </div>
-      )}
+      {mounted && modal ? createPortal(modal, document.body) : null}
     </>
   );
 }

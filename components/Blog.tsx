@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ScrollDeck from "@/components/ScrollDeck";
 
 interface Post {
   slug: string;
@@ -121,7 +122,7 @@ export default function Blog() {
           to break.
         </motion.p>
 
-        <div className="-mx-6 md:-mx-12 px-6 md:px-12 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scroll-smooth [scrollbar-width:thin]">
+        <ScrollDeck>
           {POSTS.map((post, i) => (
             <motion.div
               key={post.slug}
@@ -163,7 +164,7 @@ export default function Blog() {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </ScrollDeck>
       </div>
     </section>
   );
