@@ -244,6 +244,14 @@ const PROJECTS: Project[] = [
       "n8n (self-hosted) · Custom JavaScript Code nodes · Cookie-based auth · Google Drive API · Cron (daily 08:00 SGT)",
     result:
       "5,461+ SKUs reported daily, fully hands-off. 40-iteration retry cap with timeout exception. Manual labor reclaimed permanently.",
+    screenshots: [
+      {
+        src: "/images/projects/bigseller_2.png",
+        alt: "BIGSELLER sales report automation - n8n workflow polling the platform's private export API on a daily schedule and dropping the .xlsx into Google Drive",
+        caption: "n8n polling state machine for daily SKU exports",
+        aspect: "wide",
+      },
+    ],
   },
 ];
 

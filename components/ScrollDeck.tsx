@@ -12,18 +12,23 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /**
  * Endless horizontal-scroll deck.
- *  - Children are tripled. The middle copy is the "real" view; the outer two
- *    copies are clones that exist so the user can scroll past either edge.
- *    When the scroll position crosses into an outer copy, scrollLeft is
- *    instantly teleported by one set-width so the visible content stays
- *    identical but the user has fresh runway in both directions.
- *  - Mouse-drag to scroll (touch + trackpad still work natively).
- *  - No visible scrollbar.
- *  - Arrows always render because the loop is infinite in both directions.
  *
- * Drag handling: `mousemove`/`mouseup` attach to `document` ONLY after
- * `mousedown` and detach on `mouseup`. They do NOT exist while just hovering,
- * which kills the "follows-cursor without click" bug.
+ * Loop: children are rendered three times. The middle copy is the "real" view;
+ * the outer two copies are clones so the user can scroll past either edge.
+ * When the scroll position crosses into an outer third, scrollLeft teleports
+ * by one set-width so visible content stays identical but runway is replenished
+ * in both directions. Result: drag the first tile to the right (or last to the
+ * left) and it wraps around continuously.
+ *
+ * Drag: uses POINTER EVENTS with setPointerCapture, not mouse events with
+ * document listeners. Pointer capture routes all subsequent pointer events to
+ * the captured element until release - including events outside the window -
+ * so a release-outside-window or a re-render mid-drag cannot leak a phantom
+ * mousemove handler that would cause "follows-cursor without click". An
+ * explicit isDragging flag is checked in onPointerMove as belt-and-suspenders.
+ *
+ * Touch is left to native scrolling (we early-return for pointerType !== 'mouse')
+ * so overflow-x-auto + scroll-snap handle finger drags without our interference.
  *
  * Children should provide their own width + snap-start classes, e.g.
  * `shrink-0 snap-start w-[85vw] max-w-[400px]`.
@@ -37,6 +42,8 @@ export default function ScrollDeck({
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const dragState = useRef({
+    isDragging: false,
+    pointerId: -1,
     startX: 0,
     startScrollLeft: 0,
     moved: false,
@@ -50,16 +57,9 @@ export default function ScrollDeck({
   const measureSetWidth = useCallback(() => {
     const el = scrollerRef.current;
     if (!el) return 0;
-    // We render three identical copies side by side. The total content width
-    // is therefore exactly 3x one set's width. scrollWidth excludes the
-    // scrollbar gutter but includes the inner padding once, so dividing by
-    // three gives one set's true on-screen extent.
     return el.scrollWidth / 3;
   }, []);
 
-  // Center the scroll position on mount so the user starts inside the middle
-  // copy with infinite runway in both directions. Use useLayoutEffect so the
-  // jump happens before the browser paints (no visible flash at scrollLeft=0).
   useLayoutEffect(() => {
     const el = scrollerRef.current;
     if (!el || itemCount === 0) return;
@@ -67,15 +67,11 @@ export default function ScrollDeck({
     setWidthRef.current = oneSet;
     teleportingRef.current = true;
     el.scrollLeft = oneSet;
-    // Release the teleport guard on the next frame, after the scroll event
-    // for the manual reset has flushed.
     requestAnimationFrame(() => {
       teleportingRef.current = false;
     });
   }, [itemCount, measureSetWidth]);
 
-  // Boundary teleport: when scroll enters the outer thirds, instantly reset
-  // back into the middle copy by adding or subtracting one set width.
   const handleScroll = useCallback(() => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -86,7 +82,6 @@ export default function ScrollDeck({
     if (el.scrollLeft < oneSet * 0.5) {
       teleportingRef.current = true;
       el.scrollLeft += oneSet;
-      // Keep an in-progress drag visually continuous.
       dragState.current.startScrollLeft += oneSet;
       requestAnimationFrame(() => {
         teleportingRef.current = false;
@@ -115,42 +110,60 @@ export default function ScrollDeck({
     };
   }, [handleScroll, measureSetWidth]);
 
-  function onMouseDown(e: React.MouseEvent<HTMLDivElement>) {
+  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse") return;
+    if (e.button !== 0) return;
     const el = scrollerRef.current;
     if (!el) return;
-    if (e.button !== 0) return;
 
-    dragState.current.startX = e.pageX;
+    try {
+      el.setPointerCapture(e.pointerId);
+    } catch {
+      // Some browsers throw if capture is denied; treat as a non-drag click.
+      return;
+    }
+    dragState.current.isDragging = true;
+    dragState.current.pointerId = e.pointerId;
+    dragState.current.startX = e.clientX;
     dragState.current.startScrollLeft = el.scrollLeft;
     dragState.current.moved = false;
     el.classList.add("cursor-grabbing");
-
-    document.addEventListener("mousemove", onDocMouseMove);
-    document.addEventListener("mouseup", onDocMouseUp);
   }
 
-  function onDocMouseMove(e: MouseEvent) {
+  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (!dragState.current.isDragging) return;
+    if (e.pointerId !== dragState.current.pointerId) return;
     const el = scrollerRef.current;
     if (!el) return;
-    const dx = e.pageX - dragState.current.startX;
+    const dx = e.clientX - dragState.current.startX;
     if (Math.abs(dx) > 8) dragState.current.moved = true;
     el.scrollLeft = dragState.current.startScrollLeft - dx;
   }
 
-  function onDocMouseUp() {
+  function endDrag(e?: React.PointerEvent<HTMLDivElement>) {
+    if (!dragState.current.isDragging) return;
     const el = scrollerRef.current;
-    if (el) el.classList.remove("cursor-grabbing");
-    document.removeEventListener("mousemove", onDocMouseMove);
-    document.removeEventListener("mouseup", onDocMouseUp);
+    if (el) {
+      el.classList.remove("cursor-grabbing");
+      if (e && el.hasPointerCapture(e.pointerId)) {
+        try {
+          el.releasePointerCapture(e.pointerId);
+        } catch {
+          // Safe to ignore - capture already released.
+        }
+      }
+    }
+    dragState.current.isDragging = false;
+    dragState.current.pointerId = -1;
   }
 
-  useEffect(() => {
-    return () => {
-      document.removeEventListener("mousemove", onDocMouseMove);
-      document.removeEventListener("mouseup", onDocMouseUp);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  function onPointerUp(e: React.PointerEvent<HTMLDivElement>) {
+    endDrag(e);
+  }
+
+  function onPointerCancel(e: React.PointerEvent<HTMLDivElement>) {
+    endDrag(e);
+  }
 
   function onClickCapture(e: React.MouseEvent<HTMLDivElement>) {
     if (dragState.current.moved) {
@@ -173,9 +186,12 @@ export default function ScrollDeck({
     <div className={`relative -mx-6 md:-mx-12 ${className}`}>
       <div
         ref={scrollerRef}
-        onMouseDown={onMouseDown}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}
         onClickCapture={onClickCapture}
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 md:px-16 pb-6 scroll-smooth cursor-grab select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:[mask-image:linear-gradient(to_right,transparent_0,black_64px,black_calc(100%-64px),transparent_100%)]"
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 md:px-16 pb-6 scroll-smooth cursor-grab select-none touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:[mask-image:linear-gradient(to_right,transparent_0,black_64px,black_calc(100%-64px),transparent_100%)]"
       >
         {copies.map((copy) => (
           <Fragment key={copy}>
