@@ -67,7 +67,7 @@ export default function CountUpTile({
   return (
     <div
       ref={ref}
-      className="rounded-2xl border border-white/10 bg-surface/30 p-6 backdrop-blur-sm"
+      className="rounded-2xl border border-border bg-surface p-6 backdrop-blur-sm"
     >
       <div className="text-3xl md:text-4xl font-bold text-primary">
         {display}

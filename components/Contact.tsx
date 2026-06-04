@@ -125,7 +125,7 @@ export default function Contact() {
               const Icon = step.icon;
               return (
                 <div key={step.label} className="flex items-center flex-1">
-                  <div className="flex-1 rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-5 h-full">
+                  <div className="flex-1 rounded-2xl border border-border bg-surface backdrop-blur-sm p-5 h-full">
                     <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 border border-primary/30">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
@@ -150,7 +150,7 @@ export default function Contact() {
               return (
                 <div
                   key={step.label}
-                  className="rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-5 flex gap-4"
+                  className="rounded-2xl border border-border bg-surface backdrop-blur-sm p-5 flex gap-4"
                 >
                   <div className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 border border-primary/30">
                     <Icon className="h-5 w-5 text-primary" />
@@ -226,19 +226,19 @@ export default function Contact() {
                 name="name"
                 placeholder="Name"
                 required
-                className="w-full rounded-xl border border-white/10 bg-surface/40 px-4 py-3 text-foreground placeholder:text-muted backdrop-blur-sm focus:border-primary/50 focus:outline-none"
+                className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-foreground placeholder:text-muted backdrop-blur-sm focus:border-primary/50 focus:outline-none"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Email"
                 required
-                className="w-full rounded-xl border border-white/10 bg-surface/40 px-4 py-3 text-foreground placeholder:text-muted backdrop-blur-sm focus:border-primary/50 focus:outline-none"
+                className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-foreground placeholder:text-muted backdrop-blur-sm focus:border-primary/50 focus:outline-none"
               />
               <select
                 name="projectType"
                 defaultValue="Marketplace API"
-                className="w-full rounded-xl border border-white/10 bg-surface/40 px-4 py-3 text-foreground backdrop-blur-sm focus:border-primary/50 focus:outline-none"
+                className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-foreground backdrop-blur-sm focus:border-primary/50 focus:outline-none"
               >
                 <option value="Marketplace API">Marketplace API Integration</option>
                 <option value="n8n Workflow">n8n Workflow Automation</option>
@@ -253,12 +253,12 @@ export default function Contact() {
                 placeholder="Tell me about your project..."
                 required
                 rows={6}
-                className="w-full rounded-xl border border-white/10 bg-surface/40 px-4 py-3 text-foreground placeholder:text-muted backdrop-blur-sm focus:border-primary/50 focus:outline-none resize-none"
+                className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-foreground placeholder:text-muted backdrop-blur-sm focus:border-primary/50 focus:outline-none resize-none"
               />
               <button
                 type="submit"
                 disabled={submitting}
-                className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_0_30px_rgba(103,232,249,0.5)] disabled:opacity-50"
+                className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_8px_30px_rgba(8,145,178,0.25)] disabled:opacity-50"
               >
                 Send Message →
               </button>
@@ -314,7 +314,7 @@ export default function Contact() {
             </h3>
 
             {CALENDAR_CONFIGURED ? (
-              <div className="rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm overflow-hidden">
+              <div className="rounded-2xl border border-border bg-surface backdrop-blur-sm overflow-hidden">
                 <iframe
                   src={CALENDAR_EMBED_URL}
                   className="w-full h-[640px] border-0"
@@ -326,7 +326,7 @@ export default function Contact() {
                 />
               </div>
             ) : (
-              <div className="rounded-2xl border border-primary/20 bg-surface/30 backdrop-blur-sm p-8 text-center">
+              <div className="rounded-2xl border border-primary/20 bg-surface backdrop-blur-sm p-8 text-center">
                 <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
                 <div className="text-foreground font-bold mb-2">
                   Calendar booking coming soon
@@ -338,7 +338,7 @@ export default function Contact() {
                 </p>
                 <a
                   href="mailto:jeffrey.v.quemuel@gmail.com?subject=Discovery Call Request"
-                  className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_0_30px_rgba(103,232,249,0.5)]"
+                  className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_8px_30px_rgba(8,145,178,0.25)]"
                 >
                   Request a Call →
                 </a>

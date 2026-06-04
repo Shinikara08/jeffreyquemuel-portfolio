@@ -3,7 +3,7 @@ import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 border-t border-white/10 px-6 md:px-12 py-12 mt-16">
+    <footer className="relative z-10 border-t border-border px-6 md:px-12 py-12 mt-16">
       <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div className="text-sm text-muted">
           Designed &amp; built by{" "}
@@ -18,7 +18,7 @@ export default function Footer() {
           <a
             href="mailto:jeffrey.v.quemuel@gmail.com"
             aria-label="Email"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-surface/30 text-muted transition hover:border-primary/50 hover:text-primary"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-muted transition hover:border-primary/50 hover:text-primary"
           >
             <Mail className="h-4 w-4" />
           </a>
@@ -27,7 +27,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-surface/30 text-muted transition hover:border-primary/50 hover:text-primary"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-muted transition hover:border-primary/50 hover:text-primary"
           >
             <FaLinkedin className="h-4 w-4" />
           </a>
@@ -36,7 +36,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-surface/30 text-muted transition hover:border-primary/50 hover:text-primary"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-muted transition hover:border-primary/50 hover:text-primary"
           >
             <FaFacebook className="h-4 w-4" />
           </a>

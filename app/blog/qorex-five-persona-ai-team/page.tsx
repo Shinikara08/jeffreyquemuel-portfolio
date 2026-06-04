@@ -43,7 +43,7 @@ function AgentImage({
 }) {
   return (
     <figure
-      className={`relative my-8 overflow-hidden rounded-2xl border border-white/10 bg-surface/30 ${
+      className={`relative my-8 overflow-hidden rounded-2xl border border-border bg-surface ${
         wide ? "aspect-[16/9]" : "aspect-[16/9]"
       }`}
     >
@@ -244,7 +244,7 @@ export default function Post() {
         The Pipeline In Practice
       </h2>
       <p>The five agents are not parallel. They are a pipeline:</p>
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`Storm  ->  Rune  ->  Forge  ->  Echo
                               ^
                           Hiru runs the outward perimeter`}</code>
@@ -303,7 +303,7 @@ export default function Post() {
           restructured PDF plus prominent portfolio link.
         </li>
       </ul>
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`Layer 1 (full rewrite)        ICE: 7.3   Park It
 Layer 2 (surgical edits)      ICE: 8.0   Strong fallback
 Layer 3 (live web CV)         ICE: 5.7   Defer to phase 2

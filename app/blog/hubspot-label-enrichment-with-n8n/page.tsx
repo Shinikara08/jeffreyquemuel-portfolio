@@ -124,7 +124,7 @@ export default function Post() {
         <code className="text-primary">&quot;None&quot;</code> instead of
         guessing.
       </p>
-      <blockquote className="border-l-4 border-primary/60 bg-surface/40 pl-4 py-3 italic text-muted">
+      <blockquote className="border-l-4 border-primary/60 bg-slate-50 dark:bg-white/5 pl-4 py-3 italic text-muted">
         Better to leave a field empty than poison the database with a wrong
         label that someone later treats as ground truth.
       </blockquote>

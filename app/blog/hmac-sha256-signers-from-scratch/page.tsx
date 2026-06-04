@@ -63,7 +63,7 @@ export default function Post() {
         </code>
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`import crypto from "node:crypto";
 
 function signShopeeRequest({
@@ -101,7 +101,7 @@ function signShopeeRequest({
         alphabetically, joined as key-value pairs.
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`function signLazadaRequest({ params, path, appSecret }) {
   const timestamp = Date.now(); // ms here, not seconds
   const signed = { ...params, timestamp, sign_method: "sha256" };

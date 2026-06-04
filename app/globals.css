@@ -1,14 +1,42 @@
 @import "tailwindcss";
 
+/* Toggle dark mode via a `.dark` class on <html> (set by next-themes). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme (default) */
+:root {
+  --background: #F8FAFC;
+  --surface: #FFFFFF;
+  --primary: #0891B2;
+  --secondary: #7C3AED;
+  --foreground: #0F172A;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --scrollbar-track: #F8FAFC;
+  --scrollbar-thumb: #CBD5E1;
+}
+
+/* Dark theme (original identity) */
+.dark {
+  --background: #0A0F1E;
+  --surface: #111827;
+  --primary: #67E8F9;
+  --secondary: #A78BFA;
+  --foreground: #F9FAFB;
+  --muted: #9CA3AF;
+  --border: #1F2937;
+  --scrollbar-track: #0A0F1E;
+  --scrollbar-thumb: #1F2937;
+}
+
 @theme inline {
-  --color-background: #0A0F1E;
-  --color-surface: #111827;
-  --color-primary: #67E8F9;
-  --color-secondary: #A78BFA;
-  --color-foreground: #F9FAFB;
-  --color-muted: #9CA3AF;
-  --color-border: #1F2937;
-  --color-hero-word: #4A5578;
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
 
   --font-heading: Arial, sans-serif;
   --font-body: Arial, sans-serif;
@@ -25,20 +53,21 @@
 html, body {
   padding: 0;
   margin: 0;
-  background-color: #0A0F1E;
-  color: #F9FAFB;
+  background-color: var(--background);
+  color: var(--foreground);
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
   font-family: Arial, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #0A0F1E; }
-::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #67E8F9; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

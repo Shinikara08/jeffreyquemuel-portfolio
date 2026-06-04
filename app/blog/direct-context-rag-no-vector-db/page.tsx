@@ -121,7 +121,7 @@ export default function Post() {
         caption="The same CRM state that feeds the direct-context assistant"
       />
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`// /api/chat - pseudocode
 export async function POST(req: Request) {
   const { messages } = await req.json();

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TopNav from "@/components/TopNav";
+import ThemeProvider from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -50,13 +51,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className="bg-background text-foreground antialiased min-h-screen pt-16"
         suppressHydrationWarning
       >
-        <TopNav />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <TopNav />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

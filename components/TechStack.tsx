@@ -45,14 +45,14 @@ const STACK: Tech[] = [
   { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
   { name: "Java", Icon: FaJava, color: "#ED8B00" },
   { name: "Kotlin", Icon: SiKotlin, color: "#7F52FF" },
-  { name: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "var(--foreground)" },
   { name: "React", Icon: SiReact, color: "#61DAFB" },
   { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
   { name: "Framer Motion", Icon: SiFramer, color: "#BB4B96" },
   { name: "FastAPI", Icon: SiFastapi, color: "#009688" },
   { name: "Electron", Icon: SiElectron, color: "#47848F" },
   { name: "Docker", Icon: SiDocker, color: "#2496ED" },
-  { name: "Vercel", Icon: SiVercel, color: "#FFFFFF" },
+  { name: "Vercel", Icon: SiVercel, color: "var(--foreground)" },
   { name: "BigQuery", Icon: SiGooglebigquery, color: "#669DF6" },
   { name: "Google Sheets", Icon: SiGooglesheets, color: "#34A853" },
   { name: "Apps Script", Icon: SiGoogleappsscript, color: "#4285F4" },
@@ -89,7 +89,7 @@ export default function TechStack() {
             return (
               <div
                 key={i}
-                className="flex items-center gap-3 shrink-0 rounded-full border border-white/10 bg-surface/50 px-5 py-3 backdrop-blur-sm hover:border-primary/40 transition"
+                className="flex items-center gap-3 shrink-0 rounded-full border border-border bg-surface px-5 py-3 backdrop-blur-sm hover:border-primary/40 transition"
               >
                 <Icon className="h-6 w-6" style={{ color: tech.color }} />
                 <span className="text-sm text-foreground whitespace-nowrap">

@@ -1,31 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ScrollingMarquee from "./ScrollingMarquee";
 import HeroTitleRoller from "./HeroTitleRoller";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative z-10 flex items-center justify-center overflow-hidden px-4 pt-24 pb-12"
+      className="relative z-10 flex items-center justify-center overflow-hidden px-4 pt-32 pb-12"
     >
-      <ScrollingMarquee />
-
       <div className="relative z-20 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 flex items-center gap-2 rounded-full border border-primary/20 bg-surface/50 px-4 py-1.5 text-xs uppercase tracking-widest backdrop-blur-sm"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-          </span>
-          <span className="text-primary">Available for work</span>
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,7 +56,7 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_0_30px_rgba(103,232,249,0.5)]"
+            className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_8px_30px_rgba(8,145,178,0.25)]"
           >
             View My Work →
           </a>

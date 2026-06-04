@@ -50,10 +50,10 @@ const agents = [
     ],
     href: "/blog/how-i-built-a-five-persona-ai-team",
     cta: "Read the System Story",
-    cardTint: "bg-fuchsia-50/5",
+    cardTint: "bg-fuchsia-50 dark:bg-fuchsia-50/5",
     border: "border-fuchsia-400",
     button: "bg-fuchsia-600 hover:bg-fuchsia-500",
-    chip: "border-fuchsia-400/40 bg-fuchsia-600/20 text-fuchsia-100",
+    chip: "border-fuchsia-200 bg-fuchsia-100 text-fuchsia-700 dark:border-fuchsia-400/40 dark:bg-fuchsia-600/20 dark:text-fuchsia-100",
   },
   {
     tag: "OUTWARD VOICE",
@@ -72,10 +72,10 @@ const agents = [
     ],
     href: "/blog/how-i-built-a-five-persona-ai-team#hiru",
     cta: "Read Hiru's Story",
-    cardTint: "bg-slate-50/5",
+    cardTint: "bg-slate-50 dark:bg-slate-50/5",
     border: "border-slate-400",
     button: "bg-slate-700 hover:bg-slate-600",
-    chip: "border-slate-400/40 bg-slate-700/20 text-slate-100",
+    chip: "border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-400/40 dark:bg-slate-700/20 dark:text-slate-100",
   },
   {
     tag: "BRAINSTORMER",
@@ -94,10 +94,10 @@ const agents = [
     ],
     href: "/blog/how-i-built-a-five-persona-ai-team#storm",
     cta: "Read Storm's Story",
-    cardTint: "bg-blue-50/5",
+    cardTint: "bg-blue-50 dark:bg-blue-50/5",
     border: "border-pink-400",
     button: "bg-blue-600 hover:bg-blue-500",
-    chip: "border-pink-400/40 bg-blue-600/20 text-blue-100",
+    chip: "border-pink-200 bg-blue-100 text-blue-700 dark:border-pink-400/40 dark:bg-blue-600/20 dark:text-blue-100",
   },
   {
     tag: "PROMPT MASTER",
@@ -116,10 +116,10 @@ const agents = [
     ],
     href: "/blog/how-i-built-a-five-persona-ai-team#rune",
     cta: "Read Rune's Story",
-    cardTint: "bg-amber-50/5",
+    cardTint: "bg-amber-50 dark:bg-amber-50/5",
     border: "border-amber-500",
     button: "bg-slate-500 hover:bg-slate-400",
-    chip: "border-amber-500/40 bg-amber-500/10 text-amber-100",
+    chip: "border-amber-200 bg-amber-100 text-amber-700 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-100",
   },
   {
     tag: "BUILDER",
@@ -138,10 +138,10 @@ const agents = [
     ],
     href: "/blog/how-i-built-a-five-persona-ai-team#forge",
     cta: "Read Forge's Story",
-    cardTint: "bg-red-50/5",
+    cardTint: "bg-red-50 dark:bg-red-50/5",
     border: "border-red-700",
     button: "bg-red-600 hover:bg-red-500",
-    chip: "border-red-500/40 bg-red-600/20 text-red-100",
+    chip: "border-red-200 bg-red-100 text-red-700 dark:border-red-500/40 dark:bg-red-600/20 dark:text-red-100",
   },
   {
     tag: "MEMORY KEEPER",
@@ -160,10 +160,10 @@ const agents = [
     ],
     href: "/blog/how-i-built-a-five-persona-ai-team#echo",
     cta: "Read Echo's Story",
-    cardTint: "bg-violet-50/5",
+    cardTint: "bg-violet-50 dark:bg-violet-50/5",
     border: "border-violet-900",
     button: "bg-violet-700 hover:bg-violet-600",
-    chip: "border-violet-500/40 bg-violet-700/20 text-violet-100",
+    chip: "border-violet-200 bg-violet-100 text-violet-700 dark:border-violet-500/40 dark:bg-violet-700/20 dark:text-violet-100",
   },
 ];
 
@@ -187,7 +187,7 @@ export default function QoreXPage() {
             ships the build, Echo archives, and Hiru handles the outward voice.
             Meet them below.
           </p>
-          <div className="relative mt-10 aspect-[2/1] overflow-hidden rounded-2xl border border-white/10 bg-surface/30 shadow-[0_0_60px_rgba(103,232,249,0.12)]">
+          <div className="relative mt-10 aspect-[2/1] overflow-hidden rounded-2xl border border-border bg-[#0A0F1E] shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
             <Image
               src="/images/qorex/convergence.jpg"
               alt="The QoreNexus convergence with Hiru and the AI team beneath floating crystal islands"
@@ -210,9 +210,9 @@ export default function QoreXPage() {
             <article
               key={agent.name}
               id={agent.name.toLowerCase()}
-              className={`isolate scroll-mt-24 overflow-hidden rounded-2xl border border-white/10 border-l-4 ${agent.border} ${agent.cardTint} shadow-[0_0_40px_rgba(103,232,249,0.05)] transition hover:shadow-[0_0_50px_rgba(103,232,249,0.12)] md:grid md:grid-cols-5`}
+              className={`isolate scroll-mt-24 overflow-hidden rounded-2xl border border-border border-l-4 ${agent.border} ${agent.cardTint} shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition hover:shadow-[0_10px_30px_rgba(15,23,42,0.08)] md:grid md:grid-cols-5`}
             >
-              <div className="relative z-0 aspect-video bg-background/50 md:col-span-2 md:min-h-[360px] lg:min-h-[420px]">
+              <div className="relative z-0 min-h-[280px] bg-[#0A0F1E] md:col-span-2 md:h-full md:min-h-[360px] lg:min-h-[420px]">
                 <Link
                   href={`/qorex#${agent.name.toLowerCase()}`}
                   aria-label={`Jump to ${agent.name}`}
@@ -225,12 +225,12 @@ export default function QoreXPage() {
                     sizes="(max-width: 768px) 100vw, 460px"
                     quality={100}
                     unoptimized
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </Link>
               </div>
 
-              <div className="relative z-10 flex min-w-0 flex-col justify-center bg-surface/20 p-8 md:col-span-3 md:p-12">
+              <div className="relative z-10 flex min-w-0 flex-col justify-center bg-surface p-8 md:col-span-3 md:p-12">
                 <span
                   className={`mb-6 inline-flex w-fit rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-widest ${agent.chip}`}
                 >
@@ -239,10 +239,10 @@ export default function QoreXPage() {
                 <h2 className="text-5xl font-bold uppercase tracking-wide md:text-7xl">
                   {agent.name}
                 </h2>
-                <p className="mt-4 inline-block rounded-xl border border-white/10 bg-background/70 px-5 py-3 text-xl italic text-muted backdrop-blur-sm">
+                <p className="mt-4 inline-block rounded-xl border border-border bg-slate-50 dark:bg-white/5 px-5 py-3 text-xl italic text-muted backdrop-blur-sm">
                   {agent.quote}
                 </p>
-                <p className="mt-6 max-w-3xl rounded-xl border border-white/10 bg-background/70 px-5 py-4 text-base leading-relaxed text-muted backdrop-blur-sm md:text-lg">
+                <p className="mt-6 max-w-3xl rounded-xl border border-border bg-slate-50 dark:bg-white/5 px-5 py-4 text-base leading-relaxed text-muted backdrop-blur-sm md:text-lg">
                   {agent.bio}
                 </p>
 
@@ -254,7 +254,7 @@ export default function QoreXPage() {
                     {agent.abilities.map(([lead, text]) => (
                       <li
                         key={lead + text}
-                        className="rounded-xl border border-white/10 bg-background/35 px-4 py-3 text-sm text-muted"
+                        className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 px-4 py-3 text-sm text-muted"
                       >
                         <strong className="text-foreground">{lead}</strong>{" "}
                         {text}
@@ -276,14 +276,14 @@ export default function QoreXPage() {
       </section>
 
       <section className="px-6 pb-24 md:px-12">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 border-t border-white/10 pt-10 md:flex-row md:items-center">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 border-t border-border pt-10 md:flex-row md:items-center">
           <p className="text-2xl font-bold uppercase tracking-wide">
             QoreX is my working method. Hire me, you get QoreX.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
               href="/#projects"
-              className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_0_30px_rgba(103,232,249,0.5)]"
+              className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_8px_30px_rgba(8,145,178,0.25)]"
             >
               See My Work
             </Link>

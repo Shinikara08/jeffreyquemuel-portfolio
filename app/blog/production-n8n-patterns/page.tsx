@@ -50,7 +50,7 @@ export default function Post() {
         done this before?&rdquo; before doing it.
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`// In a Code node before a write
 const key = \`\${order.id}-\${order.version}-\${workflow.run.date}\`;
 const alreadyDone = await getFromCache(key);
@@ -84,7 +84,7 @@ await putInCache(key);`}</code>
         requests in a Code node:
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`async function callWithBackoff(fn, maxAttempts = 5) {
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     try {
@@ -120,7 +120,7 @@ await putInCache(key);`}</code>
         reference them anywhere in the workflow by name:
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`// In any later Code node, even inside a loop
 const processKey = $node["Extract Process Key"].json.processKey;`}</code>
       </pre>

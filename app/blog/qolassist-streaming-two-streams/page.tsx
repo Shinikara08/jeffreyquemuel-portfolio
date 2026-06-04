@@ -107,7 +107,7 @@ export default function Post() {
         signals.
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`# Background ASR thread emits a signal; the slot runs on the UI thread
 class TranscriberWorker(QObject):
     partial_result = pyqtSignal(str)
@@ -149,7 +149,7 @@ worker.final_result.connect(transcript_panel.append_final)`}</code>
         calling cross-thread methods directly. Emit a signal instead.
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`# WRONG - runs in the audio thread, joins itself, deadlocks
 def on_audio_error(err):
     log.error(err)
@@ -190,7 +190,7 @@ mixer.error_occurred.connect(controller.stop_listening)`}</code>
         row. Caching is purpose-built for that pattern.
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`with client.messages.stream(
     model="claude-haiku-4-5",
     max_tokens=1024,

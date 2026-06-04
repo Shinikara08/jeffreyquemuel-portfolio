@@ -19,7 +19,7 @@ export default function FloatingDock() {
       transition={{ duration: 0.8, delay: 1.2 }}
       className="fixed bottom-8 left-1/2 z-40 -translate-x-1/2"
     >
-      <div className="flex items-center gap-2 rounded-full border border-white/10 bg-surface/60 px-3 py-2 backdrop-blur-lg">
+      <div className="flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-2 backdrop-blur-lg">
         {items.map((item) => {
           const Icon = item.icon;
           return (

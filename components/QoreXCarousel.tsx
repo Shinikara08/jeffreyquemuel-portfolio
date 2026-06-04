@@ -179,7 +179,7 @@ export default function QoreXCarousel({
             type="button"
             aria-label="Previous QoreX portrait"
             onClick={() => goToSlide(-1)}
-            className="absolute left-2 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-background/75 text-primary shadow-[0_0_20px_rgba(103,232,249,0.18)] backdrop-blur-md transition hover:border-primary/50 hover:bg-primary/10"
+            className="absolute left-2 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/75 text-primary shadow-[0_10px_30px_rgba(15,23,42,0.10)] backdrop-blur-md transition hover:border-primary/50 hover:bg-primary/10"
           >
             <ChevronLeft size={24} strokeWidth={2.4} />
           </button>
@@ -202,7 +202,7 @@ export default function QoreXCarousel({
                 role="link"
                 tabIndex={0}
                 aria-label={`Jump to ${agent.name}`}
-                className={`relative h-[220px] w-[390px] shrink-0 snap-center overflow-hidden rounded-2xl border border-white/10 ${agent.border} bg-surface/40 opacity-85 transition duration-300 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary/60 md:h-[360px] md:w-[640px]`}
+                className={`relative h-[220px] w-[390px] shrink-0 snap-center overflow-hidden rounded-2xl border border-border ${agent.border} bg-[#0A0F1E] opacity-85 transition duration-300 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary/60 md:h-[360px] md:w-[640px]`}
                 onFocus={() => setSelected(index)}
                 onClick={(event) => handleCardClick(event, index)}
                 onKeyDown={(event) => handleCardKeyDown(event, index)}
@@ -226,7 +226,7 @@ export default function QoreXCarousel({
             type="button"
             aria-label="Next QoreX portrait"
             onClick={() => goToSlide(1)}
-            className="absolute right-2 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-background/75 text-primary shadow-[0_0_20px_rgba(103,232,249,0.18)] backdrop-blur-md transition hover:border-primary/50 hover:bg-primary/10"
+            className="absolute right-2 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/75 text-primary shadow-[0_10px_30px_rgba(15,23,42,0.10)] backdrop-blur-md transition hover:border-primary/50 hover:bg-primary/10"
           >
             <ChevronRight size={24} strokeWidth={2.4} />
           </button>

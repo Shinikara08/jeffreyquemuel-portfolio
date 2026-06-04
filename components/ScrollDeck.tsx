@@ -216,7 +216,7 @@ export default function ScrollDeck({
         type="button"
         aria-label="Scroll left"
         onClick={() => scrollByStep(-1)}
-        className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-background text-foreground transition hover:bg-primary/20 hover:border-primary hover:text-primary"
+        className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-primary/20 hover:border-primary hover:text-primary"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
@@ -225,7 +225,7 @@ export default function ScrollDeck({
         type="button"
         aria-label="Scroll right"
         onClick={() => scrollByStep(1)}
-        className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-background text-foreground transition hover:bg-primary/20 hover:border-primary hover:text-primary"
+        className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-primary/20 hover:border-primary hover:text-primary"
       >
         <ChevronRight className="h-5 w-5" />
       </button>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 interface Point {
   x: number;
@@ -12,25 +13,43 @@ interface Point {
   rgb: string;
 }
 
-// Three smoke tones for visual variety
-const SMOKE_PALETTE = [
-  { rgb: "0, 0, 0", weight: 0.5 },           // black shadow (50%)
-  { rgb: "30, 35, 45", weight: 0.25 },       // dark smoke (25%)
-  { rgb: "200, 210, 225", weight: 0.25 },    // white smoke (25%)
-];
-
-function pickSmokeColor(): string {
-  const r = Math.random();
-  let cumulative = 0;
-  for (const tone of SMOKE_PALETTE) {
-    cumulative += tone.weight;
-    if (r < cumulative) return tone.rgb;
-  }
-  return SMOKE_PALETTE[0].rgb;
+interface SmokeConfig {
+  palette: { rgb: string; weight: number }[];
+  fade: string;
+  alphaMul: number;
 }
+
+// Ink tones on a light wash — reads on a light background.
+const LIGHT_CONFIG: SmokeConfig = {
+  palette: [
+    { rgb: "15, 23, 42", weight: 0.5 },
+    { rgb: "100, 116, 139", weight: 0.3 },
+    { rgb: "8, 145, 178", weight: 0.2 },
+  ],
+  fade: "rgba(248, 250, 252, 0.10)",
+  alphaMul: 0.22,
+};
+
+// Original smoke tones on a near-black wash — for dark mode.
+const DARK_CONFIG: SmokeConfig = {
+  palette: [
+    { rgb: "0, 0, 0", weight: 0.5 },
+    { rgb: "30, 35, 45", weight: 0.25 },
+    { rgb: "200, 210, 225", weight: 0.25 },
+  ],
+  fade: "rgba(10, 15, 30, 0.08)",
+  alphaMul: 0.45,
+};
 
 export default function FluidCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
+  // The draw loop reads this ref so a theme switch recolors without re-init.
+  const configRef = useRef<SmokeConfig>(LIGHT_CONFIG);
+
+  useEffect(() => {
+    configRef.current = resolvedTheme === "dark" ? DARK_CONFIG : LIGHT_CONFIG;
+  }, [resolvedTheme]);
 
   useEffect(() => {
     if (
@@ -49,6 +68,17 @@ export default function FluidCursor() {
     let animationId = 0;
     let lastX = -1;
     let lastY = -1;
+
+    const pickSmokeColor = (): string => {
+      const { palette } = configRef.current;
+      const r = Math.random();
+      let cumulative = 0;
+      for (const tone of palette) {
+        cumulative += tone.weight;
+        if (r < cumulative) return tone.rgb;
+      }
+      return palette[0].rgb;
+    };
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -88,7 +118,7 @@ export default function FluidCursor() {
 
     const draw = () => {
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(10, 15, 30, 0.08)";
+      ctx.fillStyle = configRef.current.fade;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       for (let i = points.length - 1; i >= 0; i--) {
@@ -105,7 +135,7 @@ export default function FluidCursor() {
           continue;
         }
         const lifeRatio = 1 - p.age / life;
-        const alpha = Math.pow(lifeRatio, 1.5) * 0.45;
+        const alpha = Math.pow(lifeRatio, 1.5) * configRef.current.alphaMul;
         const expansion = 1 + (1 - lifeRatio) * 2.2;
         const radius = p.baseRadius * expansion;
 

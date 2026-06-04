@@ -100,7 +100,7 @@ function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ delay: index * 0.1 }}
-      className="group shrink-0 snap-start w-[80vw] max-w-[300px] flex flex-col rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-6 transition hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(103,232,249,0.15)]"
+      className="group shrink-0 snap-start w-[80vw] max-w-[300px] flex flex-col rounded-2xl border border-border bg-surface backdrop-blur-sm p-6 transition hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
     >
       <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 mb-4">
         <Icon className="h-5 w-5 text-primary" />

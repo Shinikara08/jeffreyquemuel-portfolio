@@ -142,7 +142,7 @@ export default function Blog() {
               className="snap-start shrink-0 w-[85vw] max-w-[420px]"
             >
               <Link href={`/blog/${post.slug}`} className="block h-full">
-                <article className="group relative h-full rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-8 transition hover:border-primary/40 hover:shadow-[0_0_40px_rgba(103,232,249,0.15)] hover:-translate-y-1">
+                <article className="group relative h-full rounded-2xl border border-border bg-surface backdrop-blur-sm p-8 transition hover:border-primary/40 hover:shadow-[0_10px_30px_rgba(15,23,42,0.10)] hover:-translate-y-1">
                   <div className="text-xs text-muted mb-3 uppercase tracking-widest">
                     {post.date} · {post.readTime}
                   </div>

@@ -296,7 +296,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: i * 0.1 }}
-              className="shrink-0 snap-start w-[85vw] max-w-[400px] flex flex-col rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-6 transition hover:border-primary/40 hover:shadow-[0_0_40px_rgba(103,232,249,0.1)]"
+              className="shrink-0 snap-start w-[85vw] max-w-[400px] flex flex-col rounded-2xl border border-border bg-surface backdrop-blur-sm p-6 transition hover:border-primary/40 hover:shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
             >
               <p className="text-primary italic text-xs mb-2">
                 &ldquo;{project.tagline}&rdquo;
@@ -337,7 +337,7 @@ export default function Projects() {
                   {project.screenshots.slice(0, 2).map((shot) => (
                     <figure
                       key={shot.src}
-                      className="overflow-hidden rounded-xl border border-white/10 bg-background/50"
+                      className="overflow-hidden rounded-xl border border-border bg-background/50"
                     >
                       <div className="relative aspect-[4/3]">
                         <ZoomableImage

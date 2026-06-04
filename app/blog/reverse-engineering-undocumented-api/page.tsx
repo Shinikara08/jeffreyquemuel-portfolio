@@ -42,7 +42,7 @@ export default function Post() {
         {BIGSELLER_FRAMES.map((n, i) => (
           <figure
             key={n}
-            className="snap-start shrink-0 w-[85vw] max-w-[640px] overflow-hidden rounded-2xl border border-white/10 bg-surface/30"
+            className="snap-start shrink-0 w-[85vw] max-w-[640px] overflow-hidden rounded-2xl border border-border bg-surface"
           >
             <div className="relative aspect-video">
               <ZoomableImage
@@ -60,7 +60,7 @@ export default function Post() {
                 }))}
               />
             </div>
-            <figcaption className="border-t border-white/10 px-4 py-3 text-xs uppercase tracking-widest text-muted">
+            <figcaption className="border-t border-border px-4 py-3 text-xs uppercase tracking-widest text-muted">
               BIGSELLER pipeline - {i + 1} of {BIGSELLER_FRAMES.length}
             </figcaption>
           </figure>
@@ -95,7 +95,7 @@ export default function Post() {
         response will contain something like:
       </p>
 
-      <pre className="rounded-xl border border-white/10 bg-surface/40 p-4 text-sm overflow-x-auto">
+      <pre className="rounded-xl border border-border bg-slate-50 dark:bg-white/5 p-4 text-sm overflow-x-auto">
         <code>{`{ "code": 0, "data": { "processKey": "abc123xyz" } }`}</code>
       </pre>
 

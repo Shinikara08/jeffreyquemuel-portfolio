@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 interface Star {
   x: number;
@@ -12,6 +13,16 @@ interface Star {
 
 export default function StarField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
+  // The draw loop reads this ref so a theme switch recolors without re-init.
+  const styleRef = useRef({ rgb: "15, 23, 42", alpha: 0.35 });
+
+  useEffect(() => {
+    styleRef.current =
+      resolvedTheme === "dark"
+        ? { rgb: "255, 255, 255", alpha: 1 }
+        : { rgb: "15, 23, 42", alpha: 0.35 };
+  }, [resolvedTheme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -48,7 +59,8 @@ export default function StarField() {
         const pulse = Math.sin(frame * star.pulseSpeed) * 0.3 + 0.7;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * pulse})`;
+        const { rgb, alpha } = styleRef.current;
+        ctx.fillStyle = `rgba(${rgb}, ${star.opacity * pulse * alpha})`;
         ctx.fill();
       });
       frame++;

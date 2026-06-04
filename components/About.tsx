@@ -79,7 +79,7 @@ export default function About() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="md:col-span-2"
           >
-            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(103,232,249,0.15)]">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-border shadow-[0_10px_30px_rgba(15,23,42,0.10)]">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 z-10 pointer-events-none" />
               <Image
                 src="/images/jeffrey-about.png"

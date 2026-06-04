@@ -152,7 +152,7 @@ export default function Post() {
         Looking back, all three rounds were the same fix repeated at different
         scopes:
       </p>
-      <blockquote className="border-l-4 border-primary/60 bg-surface/40 pl-4 py-3 italic text-muted">
+      <blockquote className="border-l-4 border-primary/60 bg-slate-50 dark:bg-white/5 pl-4 py-3 italic text-muted">
         Two-way state reconciliation needs explicit logic for three operations:
         ADD (the remote has something new), UPDATE (the remote changed
         something we have), DELETE (the remote no longer has something we
@@ -177,7 +177,7 @@ export default function Post() {
         anticipate.
       </p>
       <p>The lesson, written down so I remember it next time:</p>
-      <blockquote className="border-l-4 border-primary/60 bg-surface/40 pl-4 py-3 italic text-muted">
+      <blockquote className="border-l-4 border-primary/60 bg-slate-50 dark:bg-white/5 pl-4 py-3 italic text-muted">
         When you build a sync, for every remote source-of-truth, write three
         explicit blocks. Update is not enough. Add is not enough. Delete is not
         enough. Write all three and label them.
@@ -225,7 +225,7 @@ export default function Post() {
         Deletion build.
       </p>
       <p>The lesson there is different:</p>
-      <blockquote className="border-l-4 border-primary/60 bg-surface/40 pl-4 py-3 italic text-muted">
+      <blockquote className="border-l-4 border-primary/60 bg-slate-50 dark:bg-white/5 pl-4 py-3 italic text-muted">
         When CSS in a CSP-strict renderer can&rsquo;t match OS-native
         rendering for a particular widget after a few rounds, revert to the
         native widget and add features around it. Don&rsquo;t keep iterating

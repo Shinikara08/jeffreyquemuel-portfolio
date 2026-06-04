@@ -12,7 +12,7 @@ export default function BlogImage({
   aspect?: "wide" | "square" | "tall";
 }) {
   return (
-    <figure className="my-8 overflow-hidden rounded-2xl border border-white/10 bg-surface/30">
+    <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-surface">
       <div
         className={`relative ${
           aspect === "square"
@@ -29,7 +29,7 @@ export default function BlogImage({
           className="object-contain"
         />
       </div>
-      <figcaption className="border-t border-white/10 px-4 py-3 text-xs uppercase tracking-widest text-muted">
+      <figcaption className="border-t border-border px-4 py-3 text-xs uppercase tracking-widest text-muted">
         {caption}
       </figcaption>
     </figure>

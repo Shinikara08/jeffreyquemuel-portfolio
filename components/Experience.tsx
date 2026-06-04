@@ -107,7 +107,7 @@ export default function Experience() {
                   </span>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-surface/30 backdrop-blur-sm p-6 md:p-8">
+                <div className="rounded-2xl border border-border bg-surface backdrop-blur-sm p-6 md:p-8">
                   <div className="flex flex-wrap items-center gap-3 mb-2">
                     <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide">
                       {exp.role}

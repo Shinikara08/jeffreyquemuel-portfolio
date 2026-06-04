@@ -55,13 +55,13 @@ export default function BlogPostLayout({
           {children}
         </div>
 
-        <div className="mt-16 rounded-2xl border border-primary/20 bg-surface/30 backdrop-blur-sm p-8 text-center">
+        <div className="mt-16 rounded-2xl border border-primary/20 bg-surface backdrop-blur-sm p-8 text-center">
           <p className="text-lg text-muted mb-4">
             Working on something like this?
           </p>
           <Link
             href="/#contact"
-            className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_0_30px_rgba(103,232,249,0.5)]"
+            className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_8px_30px_rgba(8,145,178,0.25)]"
           >
             Start a conversation →
           </Link>
