@@ -91,7 +91,7 @@ export default function TechStack() {
                 key={i}
                 className="flex items-center gap-3 shrink-0 rounded-full border border-border bg-surface px-5 py-3 backdrop-blur-sm hover:border-primary/40 transition"
               >
-                <Icon className="h-6 w-6" style={{ color: tech.color }} />
+                <Icon className="h-6 w-6" style={{ color: tech.color }} aria-hidden focusable={false} />
                 <span className="text-sm text-foreground whitespace-nowrap">
                   {tech.name}
                 </span>

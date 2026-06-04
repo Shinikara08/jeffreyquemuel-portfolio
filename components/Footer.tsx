@@ -20,7 +20,7 @@ export default function Footer() {
             aria-label="Email"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-muted transition hover:border-primary/50 hover:text-primary"
           >
-            <Mail className="h-4 w-4" />
+            <Mail className="h-4 w-4" aria-hidden focusable={false} />
           </a>
           <a
             href="https://www.linkedin.com/in/jeffrey-quemuel-060551297/"
@@ -29,7 +29,7 @@ export default function Footer() {
             aria-label="LinkedIn"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-muted transition hover:border-primary/50 hover:text-primary"
           >
-            <FaLinkedin className="h-4 w-4" />
+            <FaLinkedin className="h-4 w-4" aria-hidden focusable={false} />
           </a>
           <a
             href="https://www.facebook.com/JeffreyQuemuelOfficial"
@@ -38,13 +38,13 @@ export default function Footer() {
             aria-label="Facebook"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-muted transition hover:border-primary/50 hover:text-primary"
           >
-            <FaFacebook className="h-4 w-4" />
+            <FaFacebook className="h-4 w-4" aria-hidden focusable={false} />
           </a>
         </div>
 
         <div className="text-xs text-muted">
           © 2026 Jeffrey Quemuel ·{" "}
-          <span className="text-primary/70">All workflows reserved.</span>
+          <span className="text-muted">All workflows reserved.</span>
         </div>
       </div>
     </footer>

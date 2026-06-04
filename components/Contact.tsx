@@ -43,23 +43,10 @@ const ROADMAP_STEPS = [
   },
 ];
 
-/**
- * ⚙️  TO ACTIVATE THE CALENDAR BOOKING WIDGET:
- *
- * 1. Go to calendar.google.com
- * 2. Click "Create" → "Appointment schedule"
- * 3. Configure: title "Discovery Call", duration (30 min), availability, buffer
- * 4. Save, then click "Share" → "Open booking page" → copy the URL
- * 5. The URL looks like:
- *      https://calendar.google.com/calendar/appointments/schedules/AcZssZ...
- * 6. Replace the entire value of CALENDAR_EMBED_URL below with that URL + "?gv=true"
- *
- * Until you do this, the iframe will show a Google placeholder.
- */
-const CALENDAR_EMBED_URL =
+// Google Calendar appointment scheduling page. Opened in a new tab via a link
+// (no inline iframe) so no Google third-party cookies / reCAPTCHA load on the page.
+const CALENDAR_URL =
   "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0u39E0PltuOypVfPXrb3vnf4j9tdFFgTERHg0Omu8wzt6xhk-S-5GytsHFIIEPc9YOXCNRHuJG";
-
-const CALENDAR_CONFIGURED = !CALENDAR_EMBED_URL.includes("YOUR_SCHEDULE_ID");
 
 export default function Contact() {
   const [submitting, setSubmitting] = useState(false);
@@ -237,6 +224,7 @@ export default function Contact() {
               />
               <select
                 name="projectType"
+                aria-label="Project type"
                 defaultValue="Marketplace API"
                 className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-foreground backdrop-blur-sm focus:border-primary/50 focus:outline-none"
               >
@@ -313,37 +301,28 @@ export default function Contact() {
               Book a Discovery Call
             </h3>
 
-            {CALENDAR_CONFIGURED ? (
-              <div className="rounded-2xl border border-border bg-surface backdrop-blur-sm overflow-hidden">
-                <iframe
-                  src={CALENDAR_EMBED_URL}
-                  className="w-full h-[640px] border-0"
-                  style={{
-                    filter: "invert(1) hue-rotate(180deg)",
-                    colorScheme: "light",
-                  }}
-                  title="Book a Discovery Call"
-                />
+            <div className="rounded-2xl border border-border bg-surface backdrop-blur-sm p-8 text-center">
+              <Calendar
+                className="h-12 w-12 text-primary mx-auto mb-4"
+                aria-hidden
+                focusable={false}
+              />
+              <div className="text-foreground font-bold mb-2">
+                30-Minute Discovery Call
               </div>
-            ) : (
-              <div className="rounded-2xl border border-primary/20 bg-surface backdrop-blur-sm p-8 text-center">
-                <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
-                <div className="text-foreground font-bold mb-2">
-                  Calendar booking coming soon
-                </div>
-                <p className="text-sm text-muted mb-6">
-                  Configure your Google Calendar Appointment Schedule to activate
-                  inline booking. See <code className="text-primary">Contact.tsx</code>{" "}
-                  for setup instructions.
-                </p>
-                <a
-                  href="mailto:jeffrey.v.quemuel@gmail.com?subject=Discovery Call Request"
-                  className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_8px_30px_rgba(8,145,178,0.25)]"
-                >
-                  Request a Call →
-                </a>
-              </div>
-            )}
+              <p className="text-sm text-muted mb-6">
+                Pick a time that works for you. We&rsquo;ll scope the bleeding
+                workflow and map next steps — no commitment.
+              </p>
+              <a
+                href={CALENDAR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-background transition hover:shadow-[0_8px_30px_rgba(8,145,178,0.25)]"
+              >
+                Book a Call →
+              </a>
+            </div>
 
             <p className="mt-4 text-xs text-muted">
               30-minute discovery call. We discuss your automation needs,
