@@ -15,6 +15,15 @@ interface Post {
 
 const POSTS: Post[] = [
   {
+    slug: "building-qeys-keyboard-overlay",
+    date: "June 06, 2026",
+    readTime: "6 min read",
+    title: "Building Qeys: A Keyboard That Watches You Type",
+    excerpt:
+      "A no-look touch-typing trainer that floats an on-screen keyboard over any app and mirrors your real typing in real time. The threading rule that keeps it stable, and shipping it to a public release in one session.",
+    tags: ["python", "tkinter", "desktop", "build-in-public"],
+  },
+  {
     slug: "hubspot-label-enrichment-with-n8n",
     date: "May 27, 2026",
     readTime: "7 min read",

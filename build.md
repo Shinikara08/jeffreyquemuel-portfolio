@@ -114,5 +114,13 @@ From a live Lighthouse report (Accessibility 88, Best Practices 77, SEO 100, Age
 Jeffrey: in dark theme, make the Powers ability-tile text all white. Changed the ability `<li>` from `text-sm text-muted` → `text-sm text-muted dark:text-white` (light keeps muted; dark = white; the lead `<strong>` was already text-foreground/white). Build green (15/15). NOT committed/deployed.
 - OBSERVED (flagged to Jeffrey, not changed): the qorex agent cards render light-grey in DARK mode too. The earlier "grey card tile in light theme" used `bg-slate-200 dark:bg-{tint}/5`, but the `dark:` utility variant uses a zero-specificity `:where()` custom-variant, so `bg-slate-200` isn't reliably overridden in dark — the grey leaks into dark mode. Offered to scope the grey to light-only (e.g., move grey into a `:root`-only token or restructure) if he wants dark cards back in dark mode.
 
+## Follow-up — new blog post: Building Qeys (2026-06-04, LOCAL ONLY)
+Created a blog post from C:\Users\qshin\Desktop\JEFFREY_MD\qeys\blogpost.md.
+- New route: `app/blog/building-qeys-keyboard-overlay/page.tsx` — converted the markdown to BlogPostLayout JSX (intro, hero BlogImage, "shape of the thing" + bullet list, two "surprise" sections with blockquote lessons, packaging section, "what shipped" list, Qollab + GitHub links). HTML-escaped quotes/dashes; code spans use text-primary; lists styled list-disc/text-muted (no prose plugin).
+- Hero image: copied JEFFREY_MD/qeys-hero.jpg → public/images/projects/qeys.jpg.
+- Registered at the top of POSTS in components/Blog.tsx (newest, June 06 2026, 6 min read).
+- Build green (16/16, new static route generated). Verified rendering on localhost (light). Theme/toggle inherited.
+- NOT committed/deployed.
+
 ## Handoff notes for Echo
 The surprise: the codebase was ~80% token-driven, so the *palette flip was one file* — the real labor was the 20% of dark-only flourishes (canvas FX, neon glows tuned for near-black, and `white/x` hairlines that vanish on white). The two genuine bugs (`#FFFFFF` icons, dark cursor fade-wash) were invisible to a token swap and only surfaced by reading the actual draw code. Lesson for future theme work: token systems carry the bulk, but canvas/`rgba()`/`white-alpha` are where dark assumptions hide. Three Q-Stack agents in one chain (Storm → Rune → Forge) on a live shipped artifact; deploy intentionally left to Jeffrey.
